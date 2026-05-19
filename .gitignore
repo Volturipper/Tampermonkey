@@ -6,3 +6,4 @@ node_modules/
 tampermonkey.config.json
 !tampermonkey.config.example.json
 handoff/backups/
+scratch/

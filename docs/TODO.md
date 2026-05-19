@@ -13,7 +13,7 @@
 
 ## Next Phase
 
-- [ ] Add the first real userscript under `scripts/<script-id>/`.
+- [x] Add the first real userscript under `scripts/<script-id>/`.
 - [x] Harvest CAC maintainer WebAI artifact for API enhancement v219.
 - [x] Add local intake/validation support for the `cac-api-enhancement` package shape.
 - [x] Add marker-only reviewer decision gate for v219 review.
@@ -33,7 +33,9 @@
 - [x] Fix `CAC_REVIEW_DECISION_GATE` stale-marker selection so latest package-referenced marker wins.
 - [x] Install v220 only after review/gates pass, replacing v219 on the dedicated runtime page so only one CAC version remains enabled.
 - [x] Run v220 API smoke, supervised dry-run smoke, lease gate, heartbeat ingest, scoped Tampermonkey verify, and default release gate refresh.
-- [ ] Plan GitHub raw auto-update testing for CAC only after preserving current single-version scoped state.
+- [x] Plan GitHub raw auto-update testing for CAC only after preserving current single-version scoped state.
+- [x] Publish CAC v220 runtime into this public Tampermonkey workspace with public raw `@updateURL` / `@downloadURL`.
+- [ ] After pushing the public script, verify unauthenticated raw fetch returns version `220.0.1`, then decide whether to replace the installed v220 metadata with the public-update variant before browser auto-update testing.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.

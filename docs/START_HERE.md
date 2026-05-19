@@ -63,6 +63,15 @@ As of 2026-05-20, v220 has replaced v219 on that dedicated runtime page in the C
 
 Current installed CAC runtime: `v220-lease-alias-candidate.1`. Verified state: one enabled CAC userscript, target page API present, other ChatGPT pages without CAC API, API smoke passed, supervised dry-run passed, lease gate passed, default release gate still blocks real Continue, unattended operation, production install, and takeover. Plan GitHub raw auto-update testing only from this single-version scoped state.
 
+Public raw update source for CAC v220 workspace testing:
+
+```text
+scripts/cac-v220-runtime/cac-v220-runtime.user.js
+https://raw.githubusercontent.com/Volturipper/Tampermonkey/main/scripts/cac-v220-runtime/cac-v220-runtime.user.js
+```
+
+Do not use `Volturipper/chatgpt-auto-continue-review` raw URLs for cross-browser Tampermonkey update checks; that repo is private, so unauthenticated raw URLs return 404.
+
 ## Browser Testing
 
 Prefer the dedicated Chrome Dev CDP profile:
