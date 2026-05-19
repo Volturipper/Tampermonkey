@@ -27,7 +27,13 @@ Implemented:
 - Sent short reviewer follow-up from `prompts/cac-api-enhancement-review-followup.md` using the dedicated Chrome Dev CDP page. The robust send path increased message count, but assistant count had not increased at the last check.
 - Reviewer later returned `REVIEW_DECISION: ACCEPT_FOR_LOCAL_API_REVIEW`. Static local API review is summarized in `docs/CAC_V219_LOCAL_API_REVIEW.md`.
 - Tool fixes during local API review: candidate API summary now parses v219 `Object.freeze` API objects; direct zip validation now extracts zip sources correctly.
-- Do not install or enable this package until a dedicated runtime smoke conversation is selected, exactly one CAC version is enabled in that profile, and fresh gates allow the next bounded step. Existing stop line remains: no real Continue, prompt submit, artifact auto-download, unattended operation, or production install.
+- 2026-05-20: reopened the registered dedicated runtime page `https://chatgpt.com/c/69fb92be-976c-83a6-9703-84ba859e4a06`; `CAC_RUNTIME_TARGET list --probe` reports `approved_runtime_count=1`.
+- 2026-05-20: disabled the previously enabled v216 CAC in the Chrome Dev Tampermonkey profile, then installed v219 only on the dedicated runtime URL. Latest scoped verify: `enabled_count=1`, `target_has_api=true`, `other_pages_with_api=0`, runtime SHA256 `0336b7dfca6c8f20145f168536813f2952301db52672f47703898fccd7ff35dd`.
+- 2026-05-20: v219 API smoke passed with 27 keys; supervised dry-run passed with `zero_real_actions=true`; fast-track bounded real smoke passed with `actionTaken=none`, `actionCount=0`, `realClickCount=0`, `promptSubmits=0`, `downloads=0`.
+- Tool fix during runtime smoke: `CAC_LEASE_GATE` now accepts v219 `leaseUntil` / `acquiredAt` fields as well as older `until` / `acquired_at`, and accepts explicit zero-action dry-run evidence. Root mirror: `D:\Codex\tools\cac-lease-gate.mjs`; git capsule source: `D:\Codex\chatgpt-auto-continue\tools\sources\cac-lease-gate.mjs`.
+- Pitfall: do not use generic `D:\Codex\CAC_TAMPERMONKEY_WHITELIST_INSTALL.cmd --verify-only` for this v219 state; it defaults to an old maintainer URL and will falsely report target API missing. Use explicit `--url` and `--conversation-id` for the runtime page.
+- Current default release gate still blocks install/real Continue/unattended/takeover by policy unless owner override is passed. Owner-override read-only gate can clear policy blockers for bounded tests, but do not start unattended/takeover/production.
+- Refreshed `CAC_MONITOR` heartbeat and `cac-version-registry.json` for `v219-api-enhancement-candidate.1`; `CAC_MONITOR status --json` now reports `decision=ACTIVE` and the v219 registry entry.
 - Updated existing heartbeat automation `cac-webai-harvest-check` to monitor both maintainer deliverables and reviewer decisions through `CAC_WEBAI_DELIVERABLE_GATE` / `CAC_REVIEW_DECISION_GATE`.
 
 GitHub remote: https://github.com/Volturipper/Tampermonkey

@@ -53,6 +53,14 @@ Default stance:
 - use GitHub raw update URLs for update testing only after local gates pass;
 - keep exactly one CAC userscript version enabled in a browser profile.
 
+Current bounded runtime target:
+
+```text
+https://chatgpt.com/c/69fb92be-976c-83a6-9703-84ba859e4a06
+```
+
+As of 2026-05-20, v219 is installed only on that dedicated runtime page in the Chrome Dev profile. Use explicit `--url` / `--conversation-id` with CAC Tampermonkey verify/install helpers; the generic verify default points at an older maintainer page and can produce a false failure.
+
 ## Browser Testing
 
 Prefer the dedicated Chrome Dev CDP profile:

@@ -3,15 +3,16 @@
 Date: 2026-05-20
 
 Scope: local bounded API review for `cac-api-enhancement-v219-20260512.zip`.
-This is not install approval and not production/autonomous approval.
+This is not production/autonomous approval.
 
 ## Current Decision
 
 - WebAI reviewer marker: `REVIEW_DECISION: ACCEPT_FOR_LOCAL_API_REVIEW`.
 - Local intake profile: `cac-api-enhancement`, passed.
 - Cross-browser package validator: passed on the zip source after fixing zip extraction.
-- Runtime release gate: still blocks install, real Continue, unattended operation, and takeover.
-- Current CDP pages are maintainer/reviewer pages, not the dedicated CAC runtime page; `CAC_GATE_REFRESH` reports `RUNTIME_API_MISSING`.
+- Dedicated runtime page: `https://chatgpt.com/c/69fb92be-976c-83a6-9703-84ba859e4a06`.
+- Bounded runtime install/API smoke: passed in the Chrome Dev dedicated profile.
+- Default release gate: still blocks install, real Continue, unattended operation, and takeover by policy. Owner-override read-only gate clears policy blockers for bounded tests only.
 
 ## Static Checks
 
@@ -50,13 +51,29 @@ New read APIs:
 
 No new command APIs were detected.
 
+## Runtime Smoke
+
+- Tampermonkey scoped install: passed; exactly one CAC userscript enabled.
+- Target runtime API: present.
+- Other open ChatGPT pages with CAC API: 0.
+- API smoke: passed, 27 keys.
+- Supervised dry-run: passed, `zero_real_actions=true`.
+- Deterministic lease gate: passed after local gate compatibility fix for v219 `leaseUntil` / `acquiredAt` fields.
+- Fast-track bounded real smoke: passed with no real click:
+  - `actionTaken=none`
+  - `actionCount=0`
+  - `realClickCount=0`
+  - `promptSubmits=0`
+  - `downloads=0`
+
 ## Tool Fixes Made
 
 - `CAC_REVIEW_DECISION_GATE` added for marker-only reviewer checks.
 - `CAC_API_CONTRACT_SUMMARY` updated to parse v219 `Object.freeze({...})` API objects and `window[API_NAME] = api`.
 - `CAC_CROSS_BROWSER_PACK_VALIDATE` fixed so direct zip validation actually extracts the zip.
 - `web-ai-heartbeat-profiles.json` now treats `api_enhancement_review_accept_seen` as a ready reviewer event.
+- `CAC_LEASE_GATE` updated to read both older and v219 lease field names and to accept explicit zero-action dry-run evidence.
 
 ## Stop Line
 
-Do not install, enable, auto-update-test, or run real Continue with v219 until a dedicated runtime smoke conversation is selected, exactly one CAC version is enabled in that profile, and fresh install/release/runtime gates allow the next bounded step.
+v219 is installed only in the dedicated Chrome Dev runtime smoke page. Keep exactly one CAC userscript enabled in that profile. Do not run broad auto-update tests, unattended operation, takeover, production install, prompt submit, or artifact auto-download. Any further real Continue proof must be scoped to the dedicated runtime URL and action-time approved.

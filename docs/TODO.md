@@ -20,11 +20,14 @@
 - [x] Send short reviewer follow-up requesting exact `REVIEW_DECISION`.
 - [x] Harvest CAC independent reviewer decision for `cac-api-enhancement-v219-20260512.zip`.
 - [x] Complete static local API review summary for v219.
+- [x] Select/register a dedicated CAC runtime smoke conversation before any v219 install/update testing.
+- [x] Enforce one enabled CAC version per browser profile before any GitHub raw auto-update test.
+- [x] Run bounded v219 runtime smoke in the dedicated Chrome Dev profile.
+- [x] Refresh CAC monitor heartbeat/version registry so status surfaces no longer describe v216 as current.
+- [ ] Feed v219 runtime findings back into the CAC maintainer loop: keep `leaseUntil` support, ideally add backward-compatible `until` alias in the next CAC candidate.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
-- [ ] Select/register a dedicated CAC runtime smoke conversation before any v219 install/update testing.
-- [ ] Enforce one enabled CAC version per browser profile before any GitHub raw auto-update test.
 - [ ] Use `vite-plugin-monkey` only when a script needs build features.
 
 ## Maintenance Rules
