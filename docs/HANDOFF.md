@@ -14,6 +14,8 @@ Implemented:
 - Open-source options are recorded in `docs/OPEN_SOURCE_RESEARCH.md`; default phase-2 build choice is `vite-plugin-monkey`.
 - Broad research/design/review can be delegated to Web AI/CAC; simple focused checks stay local when that is cheaper.
 - Dedicated browser testing preference is Chrome Dev CDP profile at `127.0.0.1:9333`.
+- CAC long-term plan: `docs/CAC_LONG_TERM_OPTIMIZATION.md`.
+- CAC WebAI full-deliverable request template: `prompts/cac-webai-full-deliverable-request.md`.
 
 GitHub remote: https://github.com/Volturipper/Tampermonkey
 

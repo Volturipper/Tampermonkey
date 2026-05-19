@@ -14,6 +14,9 @@
 ## Next Phase
 
 - [ ] Add the first real userscript under `scripts/<script-id>/`.
+- [ ] Refresh CAC WebAI role heartbeats before outsourcing next CAC artifact.
+- [ ] Register a dedicated CAC runtime smoke conversation before install/update testing.
+- [ ] Enforce one enabled CAC version per browser profile before any GitHub raw auto-update test.
 - [ ] Use `vite-plugin-monkey` only when a script needs build features.
 
 ## Maintenance Rules

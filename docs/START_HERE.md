@@ -42,6 +42,17 @@ Use Codex for local repo work: code edits, tests, Git, release checks, and durab
 
 Use Web AI/CAC for broad or deep research, design alternatives, long reviews, and iterative critique when the expected output is large enough to save Codex context. For small focused lookups, Codex should decide whether direct browsing is cheaper than outsourcing.
 
+## CAC Long-Term Work
+
+CAC optimization is a long-term goal for this workspace. Before touching CAC source or browser state, read `docs/CAC_LONG_TERM_OPTIMIZATION.md`.
+
+Default stance:
+
+- use CAC/OpenPatch/WebAI delivery tools before reading long source;
+- require complete WebAI artifacts or exact diffs, not loose patch fragments;
+- use GitHub raw update URLs for update testing only after local gates pass;
+- keep exactly one CAC userscript version enabled in a browser profile.
+
 ## Browser Testing
 
 Prefer the dedicated Chrome Dev CDP profile:

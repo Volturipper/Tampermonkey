@@ -44,6 +44,10 @@ Read `docs/OPEN_SOURCE_RESEARCH.md` before adding a build pipeline. Keep plain s
 
 Keep Codex focused on local repo actions: code, tests, Git, release checks, and durable docs. Consider Web AI/CAC for broad research, design alternatives, long reviews, or iterative critique when the expected output would consume more Codex context than a local focused lookup.
 
+## CAC Work
+
+For ChatGPT Auto Continue work, read `docs/CAC_LONG_TERM_OPTIMIZATION.md` before touching source or browser state. Use existing CAC status/gate commands and WebAI/OpenPatch delivery tools before reading long CAC code. For GitHub raw auto-update testing, require the dedicated Chrome Dev profile and exactly one enabled CAC userscript version in that browser profile.
+
 ## Browser Profile
 
 For browser checks, prefer the dedicated Chrome Dev CDP profile:
