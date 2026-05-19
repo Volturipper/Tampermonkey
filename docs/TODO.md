@@ -46,7 +46,7 @@
 - [x] Harvest CAC maintainer response for `v221-self-iteration-packet`; accepted complete package `cac-api-enhancement-v221-self-iteration-20260512.zip`.
 - [x] Run static v221 intake, cross-browser package validation, contract-summary check, and targeted `selfIterationPacket` check without installing v221.
 - [x] Route v221 for independent review; focus on read-only/text-free `selfIterationPacket`, current contract-summary alignment, one-version safety, and safe defaults.
-- [ ] Harvest the v221 independent reviewer decision; require a fresh marker for `cac-api-enhancement-v221-self-iteration-20260512.zip`.
+- [ ] Harvest the v221 independent reviewer decision with `CAC_REVIEW_DECISION_GATE --package "cac-api-enhancement-v221-self-iteration-20260512.zip"`; require a fresh package-specific marker.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
 - [ ] Use `vite-plugin-monkey` only when a script needs build features.
