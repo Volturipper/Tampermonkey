@@ -33,6 +33,12 @@ Suggested first remote command after choosing visibility:
 gh repo create Volturipper/Tampermonkey --public --source . --remote origin --push
 ```
 
+## Build Tool Policy
+
+Start with plain `.user.js` plus `tools/tm-sync.mjs`. If a script needs TypeScript, imports, CSS, framework UI, generated metadata, or a dev server, isolate a build package inside that script folder and prefer `vite-plugin-monkey`.
+
+See `docs/OPEN_SOURCE_RESEARCH.md` for the researched options and phase rule.
+
 ## Browser Testing
 
 Prefer the dedicated Chrome Dev CDP profile:

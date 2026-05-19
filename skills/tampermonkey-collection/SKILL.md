@@ -35,6 +35,10 @@ Use Git for this project. Prefer a public GitHub repo for unauthenticated cross-
 
 Do not create a remote unless repo name and visibility are clear. After creating or changing the remote, run URL sync again so script metadata matches the canonical raw path.
 
+## Build Tool Policy
+
+Read `docs/OPEN_SOURCE_RESEARCH.md` before adding a build pipeline. Keep plain scripts on `tools/tm-sync.mjs`; prefer an isolated per-script `vite-plugin-monkey` package only when TypeScript, imports, CSS, generated metadata, or dev-server behavior are needed.
+
 ## Browser Profile
 
 For browser checks, prefer the dedicated Chrome Dev CDP profile:
