@@ -35,7 +35,9 @@
 - [x] Run v220 API smoke, supervised dry-run smoke, lease gate, heartbeat ingest, scoped Tampermonkey verify, and default release gate refresh.
 - [x] Plan GitHub raw auto-update testing for CAC only after preserving current single-version scoped state.
 - [x] Publish CAC v220 runtime into this public Tampermonkey workspace with public raw `@updateURL` / `@downloadURL`.
-- [ ] After pushing the public script, verify unauthenticated raw fetch returns version `220.0.1`, then decide whether to replace the installed v220 metadata with the public-update variant before browser auto-update testing.
+- [x] After pushing the public script, verify unauthenticated raw fetch returns public metadata version `2026.5.220`.
+- [x] Replace the installed v220 metadata with the public-update variant while preserving exactly one enabled CAC row in the Chrome Dev Tampermonkey profile.
+- [ ] Plan the next GitHub raw auto-update test from the restored single-version state; do not enable another CAC version alongside `2026.5.220`.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
