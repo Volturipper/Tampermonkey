@@ -17,6 +17,7 @@
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing next CAC artifact.
 - [ ] Harvest/review CAC maintainer WebAI response; accept only full artifact, exact diff, or explicit missing-evidence report.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
+- [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
 - [ ] Register a dedicated CAC runtime smoke conversation before install/update testing.
 - [ ] Enforce one enabled CAC version per browser profile before any GitHub raw auto-update test.
 - [ ] Use `vite-plugin-monkey` only when a script needs build features.

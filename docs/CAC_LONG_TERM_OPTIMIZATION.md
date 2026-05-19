@@ -31,6 +31,7 @@ Reject WebAI work when it lacks:
 
 - Do not read full CAC source or long ChatGPT history by default.
 - For CAC API questions, run `D:\Codex\CAC_API_CONTRACT_SUMMARY.cmd --no-json` and read `D:\Codex\chatgpt-auto-continue\evidence\latest\cac-api-contract-summary-latest.md` first.
+- Drive API changes from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`; do not open the large script until the summary/backlog is insufficient.
 - Start with `CAC_TOOL_INVENTORY`, `CAC_MONITOR`, n8n latest gates, version registry, role registry, and curated handoff docs.
 - Read source only by targeted search, function/symbol slice, or WebAI-provided exact file reference.
 - Package context for WebAI instead of pasting long files into Codex chat.
