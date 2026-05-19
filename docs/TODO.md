@@ -29,7 +29,8 @@
 - [x] Make `WEBAI_ASSET_INTAKE --profile cac-api-enhancement` accept both v219 and v220 API-enhancement package shapes.
 - [x] Run static v220 intake, cross-browser package validation, API contract summary, and targeted lease-alias check without installing v220.
 - [x] Send or route v220 for independent review; focus on lease alias compatibility, one-version safety, and safe defaults.
-- [ ] Harvest a new v220-specific independent reviewer marker; ignore the stale v219 `REVIEW_DECISION` marker unless the page/output names v220.
+- [x] Harvest a new v220-specific independent reviewer marker; reviewer returned `REVIEW_DECISION: ACCEPT_FOR_LOCAL_API_REVIEW`.
+- [x] Fix `CAC_REVIEW_DECISION_GATE` stale-marker selection so latest package-referenced marker wins.
 - [ ] Install v220 only after review/gates pass, replacing v219 on the dedicated runtime page so only one CAC version remains enabled.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
