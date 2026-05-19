@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT Auto Continue - CAC API Enhancement Candidate v220
 // @namespace    local.cac.full-supervised.20260506
-// @version      2026.5.220
+// @version      2026.5.221
 // @description  CAC API enhancement candidate v220: v219 API plus backward-compatible lease aliases until/acquired_at, one-version safety, inert single-conversation defaults.
 // @match        https://chatgpt.com/c/69fb92be-976c-83a6-9703-84ba859e4a06*
 // @updateURL    https://raw.githubusercontent.com/Volturipper/Tampermonkey/main/scripts/cac-v220-runtime/cac-v220-runtime.user.js
