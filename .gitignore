@@ -1,0 +1,7 @@
+node_modules/
+.serena/
+.env
+.env.*
+*.log
+tampermonkey.config.json
+!tampermonkey.config.example.json

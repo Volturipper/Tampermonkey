@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tampermonkey Collection"
+  short_description: "Manage a reusable Tampermonkey userscript collection."
+  default_prompt: "Use this skill to manage Tampermonkey scripts, versions, update URLs, and publishing checks in this workspace."
