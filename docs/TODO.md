@@ -25,7 +25,11 @@
 - [x] Run bounded v219 runtime smoke in the dedicated Chrome Dev profile.
 - [x] Refresh CAC monitor heartbeat/version registry so status surfaces no longer describe v216 as current.
 - [x] Feed v219 runtime findings back into the CAC maintainer loop: keep `leaseUntil` support and add backward-compatible `until` / `acquired_at` aliases in the next CAC candidate.
-- [ ] Harvest the maintainer response to `prompts/cac-v219-runtime-feedback-next-candidate.md`; accept only a complete package, exact replacement files, or explicit `NO_CHANGE_DECISION`.
+- [x] Harvest the maintainer response to `prompts/cac-v219-runtime-feedback-next-candidate.md`; accepted complete package `cac-api-enhancement-v220-lease-alias-20260512.zip`.
+- [x] Make `WEBAI_ASSET_INTAKE --profile cac-api-enhancement` accept both v219 and v220 API-enhancement package shapes.
+- [x] Run static v220 intake, cross-browser package validation, API contract summary, and targeted lease-alias check without installing v220.
+- [ ] Send or route v220 for independent review; focus on lease alias compatibility, one-version safety, and safe defaults.
+- [ ] Install v220 only after review/gates pass, replacing v219 on the dedicated runtime page so only one CAC version remains enabled.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.

@@ -36,6 +36,9 @@ Implemented:
 - Refreshed `CAC_MONITOR` heartbeat and `cac-version-registry.json` for `v219-api-enhancement-candidate.1`; `CAC_MONITOR status --json` now reports `decision=ACTIVE` and the v219 registry entry.
 - 2026-05-20 heartbeat: sent maintainer feedback prompt `prompts/cac-v219-runtime-feedback-next-candidate.md` to `cac-maintainer-agent-api`, requesting the next complete candidate keep `leaseUntil` / `acquiredAt` and add backward-compatible `until` / `acquired_at` aliases. Direct-send receipt: `D:\Codex\n8n-gpt-orchestrator\scratch\webai-chatgpt-direct-send-latest.json`.
 - Updated existing heartbeat automation `cac-webai-harvest-check` to monitor both maintainer deliverables and reviewer decisions through `CAC_WEBAI_DELIVERABLE_GATE` / `CAC_REVIEW_DECISION_GATE`.
+- 2026-05-20: harvested maintainer candidate `cac-api-enhancement-v220-lease-alias-20260512.zip`, SHA256 `0190c7de51f2c0ac24b4a3c67e43e32179824e853cb7b49a480bcfe268907062`. Latest accepted intake target: `D:\Codex\n8n-gpt-orchestrator\received-assets\20260520-031928-cac-api-enhancement-v220-lease-alias-20260512.zip`.
+- Tool fix: `D:\Codex\tools\webai-asset-intake.mjs` now supports required path alternatives for the `cac-api-enhancement` profile, so v219 `docs/API_ENHANCEMENT.md` / `patches/v218_to_v219_api_enhancement.diff` and v220 `docs/API_CONTRACT.md` / `patches/v219_to_v220_lease_alias.diff` both pass. Backup: `D:\Codex\tools\webai-asset-intake.mjs.bak-20260520-0320-v220-required-groups`.
+- v220 static checks only: `WEBAI_ASSET_INTAKE --profile cac-api-enhancement` passed with `required_ok=true`; `CAC_CROSS_BROWSER_PACK_VALIDATE` passed with `decision=safe_defaults_candidate_ready_for_independent_review`; `CAC_API_CONTRACT_SUMMARY --source <v220 runtime script>` passed with 27 keys. Targeted grep confirmed `leaseUntil`, `until`, `acquiredAt`, and `acquired_at` are present. v220 is not installed yet.
 
 GitHub remote: https://github.com/Volturipper/Tampermonkey
 
