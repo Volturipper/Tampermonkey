@@ -31,7 +31,9 @@
 - [x] Send or route v220 for independent review; focus on lease alias compatibility, one-version safety, and safe defaults.
 - [x] Harvest a new v220-specific independent reviewer marker; reviewer returned `REVIEW_DECISION: ACCEPT_FOR_LOCAL_API_REVIEW`.
 - [x] Fix `CAC_REVIEW_DECISION_GATE` stale-marker selection so latest package-referenced marker wins.
-- [ ] Install v220 only after review/gates pass, replacing v219 on the dedicated runtime page so only one CAC version remains enabled.
+- [x] Install v220 only after review/gates pass, replacing v219 on the dedicated runtime page so only one CAC version remains enabled.
+- [x] Run v220 API smoke, supervised dry-run smoke, lease gate, heartbeat ingest, scoped Tampermonkey verify, and default release gate refresh.
+- [ ] Plan GitHub raw auto-update testing for CAC only after preserving current single-version scoped state.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.

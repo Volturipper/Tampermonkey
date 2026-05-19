@@ -59,9 +59,9 @@ Current bounded runtime target:
 https://chatgpt.com/c/69fb92be-976c-83a6-9703-84ba859e4a06
 ```
 
-As of 2026-05-20, v219 is installed only on that dedicated runtime page in the Chrome Dev profile. Use explicit `--url` / `--conversation-id` with CAC Tampermonkey verify/install helpers; the generic verify default points at an older maintainer page and can produce a false failure.
+As of 2026-05-20, v220 has replaced v219 on that dedicated runtime page in the Chrome Dev profile. Use explicit `--url` / `--conversation-id` with CAC Tampermonkey verify/install helpers; the generic verify default points at an older maintainer page and can produce a false failure.
 
-v220 has been harvested and statically accepted for independent review, but is not installed. Do not install it alongside v219; replace the dedicated runtime page version only after review/gates pass.
+Current installed CAC runtime: `v220-lease-alias-candidate.1`. Verified state: one enabled CAC userscript, target page API present, other ChatGPT pages without CAC API, API smoke passed, supervised dry-run passed, lease gate passed, default release gate still blocks real Continue, unattended operation, production install, and takeover. Plan GitHub raw auto-update testing only from this single-version scoped state.
 
 ## Browser Testing
 
