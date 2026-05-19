@@ -64,7 +64,7 @@ https://chatgpt.com/c/69fb92be-976c-83a6-9703-84ba859e4a06
 
 As of 2026-05-20, v220 has replaced v219 on that dedicated runtime page in the Chrome Dev profile. Use explicit `--url` / `--conversation-id` with CAC Tampermonkey verify/install helpers; the generic verify default points at an older maintainer page and can produce a false failure.
 
-Current installed CAC runtime: `v220-lease-alias-candidate.1`; current Tampermonkey metadata version is `2026.5.220` from the public workspace script. Verified state: one enabled CAC userscript, target page API present, other ChatGPT pages without CAC API, API smoke passed, supervised dry-run passed, lease gate passed, default release gate still blocks real Continue, unattended operation, production install, and takeover. Plan GitHub raw auto-update testing only from this single-version scoped state.
+Current installed CAC runtime: `v220-lease-alias-candidate.1`; current Tampermonkey metadata version is `2026.5.221` from the public workspace script. Verified state: one enabled CAC userscript, target page API present, other ChatGPT pages without CAC API, API smoke passed, supervised dry-run passed, lease gate passed, default release gate still blocks real Continue, unattended operation, production install, and takeover.
 
 Public raw update source for CAC v220 workspace testing:
 
@@ -82,6 +82,10 @@ Safe raw-update test protocol for CAC:
 3. Publish a metadata-only version bump on the same public script URL; keep runtime behavior unchanged unless a reviewed candidate is being promoted.
 4. Use Tampermonkey's update path on the existing CAC row only, then re-run scoped verify, API smoke, supervised dry-run smoke, lease gate, and release gate.
 5. If a second CAC row becomes enabled, stop and restore exactly one enabled CAC row before any other test.
+
+The first metadata-only raw update test passed on 2026-05-20: public raw moved
+from `2026.5.220` to `2026.5.221`, Tampermonkey updated the existing enabled
+CAC row, no second CAC row was enabled, and the scoped smoke gates still passed.
 
 ## Browser Testing
 

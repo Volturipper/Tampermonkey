@@ -39,7 +39,7 @@
 - [x] Replace the installed v220 metadata with the public-update variant while preserving exactly one enabled CAC row in the Chrome Dev Tampermonkey profile.
 - [x] Add reusable public raw preflight command `npm run tm:raw-check`.
 - [x] Plan the next GitHub raw auto-update test from the restored single-version state; do not enable another CAC version alongside `2026.5.220`.
-- [ ] Execute the planned CAC raw auto-update test with a metadata-only version bump on the existing public script URL.
+- [x] Execute the planned CAC raw auto-update test with a metadata-only version bump on the existing public script URL.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
