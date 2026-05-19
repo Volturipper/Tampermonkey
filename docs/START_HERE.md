@@ -18,9 +18,12 @@ npm run tm:check
 npm run tm:new -- my-script --name "My Script" --match "https://example.com/*"
 npm run tm:bump -- example-versioned patch
 npm run tm:sync-urls -- --repo OWNER/REPO --branch main
+npm run tm:raw-check
 ```
 
 `tm:sync-urls` writes both `@updateURL` and `@downloadURL` to GitHub raw URLs. It also reads `tampermonkey.config.json` when present; keep `tampermonkey.config.example.json` as the tracked template.
+
+`tm:raw-check` fetches each script's public raw `@updateURL` / `@downloadURL`, compares remote `@version` with the local file, and prints the fetched SHA256. Run it before browser update checks.
 
 ## Git Decision
 
@@ -71,6 +74,14 @@ https://raw.githubusercontent.com/Volturipper/Tampermonkey/main/scripts/cac-v220
 ```
 
 Do not use `Volturipper/chatgpt-auto-continue-review` raw URLs for cross-browser Tampermonkey update checks; that repo is private, so unauthenticated raw URLs return 404.
+
+Safe raw-update test protocol for CAC:
+
+1. Refresh scoped state with `CAC_MONITOR`, `CAC_RUNTIME_TARGET`, `CAC_RELEASE_GATE`, and explicit `CAC_TAMPERMONKEY_WHITELIST_INSTALL --verify-only`.
+2. Run `npm run tm:raw-check` and confirm the public raw script is reachable.
+3. Publish a metadata-only version bump on the same public script URL; keep runtime behavior unchanged unless a reviewed candidate is being promoted.
+4. Use Tampermonkey's update path on the existing CAC row only, then re-run scoped verify, API smoke, supervised dry-run smoke, lease gate, and release gate.
+5. If a second CAC row becomes enabled, stop and restore exactly one enabled CAC row before any other test.
 
 ## Browser Testing
 

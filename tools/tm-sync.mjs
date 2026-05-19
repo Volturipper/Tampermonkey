@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import crypto from "node:crypto";
 import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -342,6 +343,10 @@ function issue(code, message) {
   return { code, message };
 }
 
+function sha256(content) {
+  return crypto.createHash("sha256").update(content, "utf8").digest("hex");
+}
+
 async function fileExists(filePath) {
   try {
     await stat(filePath);
@@ -405,6 +410,113 @@ export async function checkScripts(root = process.cwd()) {
   };
 }
 
+async function fetchText(url, { fetchImpl, timeoutMs }) {
+  const init = {};
+  if (fetchImpl === fetch && typeof AbortSignal !== "undefined" && AbortSignal.timeout) {
+    init.signal = AbortSignal.timeout(timeoutMs);
+  }
+
+  const response = await fetchImpl(url, init);
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+  return response.text();
+}
+
+export async function checkRawUrls(root = process.cwd(), options = {}) {
+  const scripts = await discoverScripts(root);
+  const fetchImpl = options.fetchImpl ?? fetch;
+  const timeoutMs = Number(options.timeoutMs ?? 20000);
+  const reports = [];
+
+  for (const script of scripts) {
+    const issues = [];
+    const localContent = await readFile(script.path, "utf8");
+    let localMetadata;
+
+    try {
+      localMetadata = parseMetadata(localContent);
+    } catch (error) {
+      reports.push({
+        ...script,
+        ok: false,
+        issues: [issue("metadata-block", error.message)],
+        urls: [],
+      });
+      continue;
+    }
+
+    const localVersion = localMetadata.get("version") || "";
+    const updateURL = localMetadata.get("updateURL") || "";
+    const downloadURL = localMetadata.get("downloadURL") || "";
+    const urls = [
+      ["updateURL", updateURL],
+      ["downloadURL", downloadURL],
+    ].filter(([, value]) => value);
+
+    for (const key of ["updateURL", "downloadURL"]) {
+      const value = localMetadata.get(key);
+      if (!value) {
+        issues.push(issue(`missing-${key}`, `missing @${key}`));
+      } else if (!/^https?:\/\//.test(value)) {
+        issues.push(issue(`invalid-${key}`, `@${key} should be an http(s) URL`));
+      }
+    }
+
+    if (updateURL && downloadURL && updateURL !== downloadURL) {
+      issues.push(issue("raw-url-mismatch", "@updateURL and @downloadURL should point to the same raw script for simple update checks"));
+    }
+
+    const fetched = [];
+    const seen = new Map();
+    for (const [key, url] of urls) {
+      if (seen.has(url)) {
+        fetched.push({ key, url, ...seen.get(url) });
+        continue;
+      }
+
+      try {
+        const remoteContent = await fetchText(url, { fetchImpl, timeoutMs });
+        const remoteMetadata = parseMetadata(remoteContent);
+        const remoteVersion = remoteMetadata.get("version") || "";
+        const item = {
+          ok: true,
+          version: remoteVersion,
+          sha256: sha256(remoteContent),
+          bytes: Buffer.byteLength(remoteContent, "utf8"),
+        };
+        seen.set(url, item);
+        fetched.push({ key, url, ...item });
+
+        if (localVersion && remoteVersion !== localVersion) {
+          issues.push(issue("remote-version-mismatch", `${key} version ${remoteVersion || "<missing>"} does not match local ${localVersion}`));
+        }
+      } catch (error) {
+        const item = {
+          ok: false,
+          error: error.message,
+        };
+        seen.set(url, item);
+        fetched.push({ key, url, ...item });
+        issues.push(issue(`fetch-${key}`, `${url}: ${error.message}`));
+      }
+    }
+
+    reports.push({
+      ...script,
+      ok: issues.length === 0,
+      version: localVersion,
+      urls: fetched,
+      issues,
+    });
+  }
+
+  return {
+    ok: scripts.length > 0 && reports.every((script) => script.ok),
+    scripts: reports,
+  };
+}
+
 function parseOptions(args) {
   const options = {};
   const positional = [];
@@ -437,6 +549,7 @@ Usage:
   node tools/tm-sync.mjs bump <script-id> [patch|minor|major|x.y.z]
   node tools/tm-sync.mjs sync-urls --repo <owner/repo> [--branch main]
   node tools/tm-sync.mjs sync-urls --raw-base <https://raw.example/base>
+  node tools/tm-sync.mjs raw-check
 `);
 }
 
@@ -465,6 +578,25 @@ async function main(argv = process.argv.slice(2)) {
     for (const script of report.scripts) {
       if (script.issues.length === 0) {
         console.log(`ok ${script.relativePath}`);
+      } else {
+        for (const item of script.issues) {
+          console.error(`${script.relativePath}: ${item.code}: ${item.message}`);
+        }
+      }
+    }
+    process.exitCode = report.ok ? 0 : 1;
+    return;
+  }
+
+  if (command === "raw-check") {
+    const report = await checkRawUrls(root);
+    if (report.scripts.length === 0) {
+      console.error("No userscripts found under scripts/");
+    }
+    for (const script of report.scripts) {
+      if (script.issues.length === 0) {
+        const first = script.urls.find((item) => item.ok);
+        console.log(`ok ${script.relativePath} version=${first?.version || script.version} sha256=${first?.sha256 || ""}`);
       } else {
         for (const item of script.issues) {
           console.error(`${script.relativePath}: ${item.code}: ${item.message}`);

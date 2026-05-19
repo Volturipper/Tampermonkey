@@ -7,6 +7,7 @@ import test from "node:test";
 import {
   bumpScriptVersion,
   checkScripts,
+  checkRawUrls,
   createScript,
   discoverScripts,
   syncScriptUrls,
@@ -167,5 +168,58 @@ test("does not overwrite an existing userscript", async () => {
   await assert.rejects(
     () => createScript(root, "example"),
     /already exists/,
+  );
+});
+
+test("raw-check verifies remote update metadata and hash", async () => {
+  const scriptUrl =
+    "https://raw.example.test/scripts/example/example.user.js";
+  const content = baseUserscript.replace(
+    "// ==/UserScript==",
+    `// @updateURL    ${scriptUrl}\n// @downloadURL  ${scriptUrl}\n// ==/UserScript==`,
+  );
+  const root = await makeWorkspace({
+    "scripts/example/example.user.js": content,
+  });
+
+  const report = await checkRawUrls(root, {
+    fetchImpl: async (url) => {
+      assert.equal(url, scriptUrl);
+      return {
+        ok: true,
+        status: 200,
+        text: async () => content,
+      };
+    },
+  });
+
+  assert.equal(report.ok, true);
+  assert.equal(report.scripts[0].urls[0].version, "1.2.3");
+  assert.match(report.scripts[0].urls[0].sha256, /^[a-f0-9]{64}$/);
+});
+
+test("raw-check reports remote version mismatch", async () => {
+  const scriptUrl =
+    "https://raw.example.test/scripts/example/example.user.js";
+  const content = baseUserscript.replace(
+    "// ==/UserScript==",
+    `// @updateURL    ${scriptUrl}\n// @downloadURL  ${scriptUrl}\n// ==/UserScript==`,
+  );
+  const root = await makeWorkspace({
+    "scripts/example/example.user.js": content,
+  });
+
+  const report = await checkRawUrls(root, {
+    fetchImpl: async () => ({
+      ok: true,
+      status: 200,
+      text: async () => content.replace("@version      1.2.3", "@version      1.2.4"),
+    }),
+  });
+
+  assert.equal(report.ok, false);
+  assert.deepEqual(
+    report.scripts[0].issues.map((item) => item.code),
+    ["remote-version-mismatch"],
   );
 });
