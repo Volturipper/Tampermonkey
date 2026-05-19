@@ -5,3 +5,4 @@ node_modules/
 *.log
 tampermonkey.config.json
 !tampermonkey.config.example.json
+handoff/backups/

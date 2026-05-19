@@ -14,8 +14,10 @@
 ## Next Phase
 
 - [ ] Add the first real userscript under `scripts/<script-id>/`.
-- [ ] Refresh CAC WebAI role heartbeats before outsourcing next CAC artifact.
-- [ ] Harvest/review CAC maintainer WebAI response; accept only full artifact, exact diff, or explicit missing-evidence report.
+- [x] Harvest CAC maintainer WebAI artifact for API enhancement v219.
+- [x] Add local intake/validation support for the `cac-api-enhancement` package shape.
+- [ ] Harvest CAC independent reviewer decision for `cac-api-enhancement-v219-20260512.zip`.
+- [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
 - [ ] Register a dedicated CAC runtime smoke conversation before install/update testing.
