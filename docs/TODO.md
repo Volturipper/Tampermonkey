@@ -40,10 +40,13 @@
 - [x] Add reusable public raw preflight command `npm run tm:raw-check`.
 - [x] Plan the next GitHub raw auto-update test from the restored single-version state; do not enable another CAC version alongside `2026.5.220`.
 - [x] Execute the planned CAC raw auto-update test with a metadata-only version bump on the existing public script URL.
-- [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
+- [x] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [x] Select next CAC API enhancement: `v221-self-iteration-packet` plus current contract-summary alignment.
 - [x] Route `prompts/cac-v221-self-iteration-packet-request.md` to the CAC maintainer as a complete package request.
-- [ ] Harvest CAC maintainer response for `v221-self-iteration-packet`; accept only a complete package, exact diff, or exact missing-evidence request.
+- [x] Harvest CAC maintainer response for `v221-self-iteration-packet`; accepted complete package `cac-api-enhancement-v221-self-iteration-20260512.zip`.
+- [x] Run static v221 intake, cross-browser package validation, contract-summary check, and targeted `selfIterationPacket` check without installing v221.
+- [x] Route v221 for independent review; focus on read-only/text-free `selfIterationPacket`, current contract-summary alignment, one-version safety, and safe defaults.
+- [ ] Harvest the v221 independent reviewer decision; require a fresh marker for `cac-api-enhancement-v221-self-iteration-20260512.zip`.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
 - [ ] Use `vite-plugin-monkey` only when a script needs build features.
