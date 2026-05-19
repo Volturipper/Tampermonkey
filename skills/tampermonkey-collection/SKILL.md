@@ -11,9 +11,10 @@ Use this workspace as a multi-script collection, not a single userscript project
 
 1. Keep each script in `scripts/<script-id>/<script-id>.user.js`.
 2. Run `npm run tm:list` to confirm discovery.
-3. Run `npm run tm:bump -- <script-id> patch` before publishing a behavior change.
-4. Run `npm run tm:sync-urls -- --repo OWNER/REPO --branch main` after choosing the GitHub raw source.
-5. Run `npm run tm:check` and `npm test` before handoff.
+3. Run `npm run tm:new -- <script-id> --name "Script Name" --match "https://example.com/*"` for a plain new script.
+4. Run `npm run tm:bump -- <script-id> patch` before publishing a behavior change.
+5. Run `npm run tm:sync-urls -- --repo OWNER/REPO --branch main` after choosing the GitHub raw source.
+6. Run `npm run tm:check` and `npm test` before handoff.
 
 `tm:sync-urls` can read `tampermonkey.config.json` when present. Keep only `tampermonkey.config.example.json` tracked unless the real config is intentionally shared.
 
@@ -38,6 +39,10 @@ Do not create a remote unless repo name and visibility are clear. After creating
 ## Build Tool Policy
 
 Read `docs/OPEN_SOURCE_RESEARCH.md` before adding a build pipeline. Keep plain scripts on `tools/tm-sync.mjs`; prefer an isolated per-script `vite-plugin-monkey` package only when TypeScript, imports, CSS, generated metadata, or dev-server behavior are needed.
+
+## Delegation Policy
+
+Keep Codex focused on local repo actions: code, tests, Git, release checks, and durable docs. Consider Web AI/CAC for broad research, design alternatives, long reviews, or iterative critique when the expected output would consume more Codex context than a local focused lookup.
 
 ## Browser Profile
 

@@ -5,10 +5,16 @@
 - [x] Create multi-script workspace layout.
 - [x] Add no-dependency `tm-sync` helper for discovery, version bumping, URL sync, and checks.
 - [x] Research mature open-source userscript build/sync options and record phase rule.
+- [x] Record Web AI/CAC delegation rule for deep research/design/review.
 - [x] Add project-specific reusable skill.
 - [x] Initialize local Git.
-- [ ] Choose GitHub remote visibility and push when ready.
-- [ ] Add a scaffold command after the second real script appears; use `vite-plugin-monkey` only when build features are needed.
+- [x] Add a plain userscript scaffold command for multi-script growth.
+- [x] Create public GitHub remote and push `main`.
+
+## Next Phase
+
+- [ ] Add the first real userscript under `scripts/<script-id>/`.
+- [ ] Use `vite-plugin-monkey` only when a script needs build features.
 
 ## Maintenance Rules
 

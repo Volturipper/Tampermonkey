@@ -15,6 +15,7 @@ This workspace is a collection for multiple Tampermonkey userscripts.
 npm test
 npm run tm:list
 npm run tm:check
+npm run tm:new -- my-script --name "My Script" --match "https://example.com/*"
 npm run tm:bump -- example-versioned patch
 npm run tm:sync-urls -- --repo OWNER/REPO --branch main
 ```
@@ -25,19 +26,21 @@ npm run tm:sync-urls -- --repo OWNER/REPO --branch main
 
 Use Git for this workspace. Tampermonkey update checks depend on stable, versioned script URLs, so Git history plus GitHub raw URLs are the lowest-friction local/cloud sync path.
 
-Do not create a remote blindly. For unauthenticated cross-browser update URLs, use a public GitHub repo or another public raw file host. Private GitHub raw URLs can fail from browser extension update checks.
+Remote: https://github.com/Volturipper/Tampermonkey
 
-Suggested first remote command after choosing visibility:
-
-```powershell
-gh repo create Volturipper/Tampermonkey --public --source . --remote origin --push
-```
+This repo is public for unauthenticated cross-browser update URLs. Private GitHub raw URLs can fail from browser extension update checks.
 
 ## Build Tool Policy
 
 Start with plain `.user.js` plus `tools/tm-sync.mjs`. If a script needs TypeScript, imports, CSS, framework UI, generated metadata, or a dev server, isolate a build package inside that script folder and prefer `vite-plugin-monkey`.
 
 See `docs/OPEN_SOURCE_RESEARCH.md` for the researched options and phase rule.
+
+## Research And Review Delegation
+
+Use Codex for local repo work: code edits, tests, Git, release checks, and durable project files.
+
+Use Web AI/CAC for broad or deep research, design alternatives, long reviews, and iterative critique when the expected output is large enough to save Codex context. For small focused lookups, Codex should decide whether direct browsing is cheaper than outsourcing.
 
 ## Browser Testing
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readdir, readFile, stat, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -220,6 +220,97 @@ function buildScriptUrl(rawBase, relativePath) {
     .join("/")}`;
 }
 
+function titleFromId(id) {
+  return id
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function validateScriptId(id) {
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(id)) {
+    throw new Error("script id must use lowercase letters, digits, and hyphens");
+  }
+}
+
+function renderUserscript(metadata) {
+  const lines = [
+    META_START,
+    metadataLine("name", metadata.name),
+    metadataLine("namespace", metadata.namespace),
+    metadataLine("version", metadata.version),
+    metadataLine("description", metadata.description),
+    metadataLine("match", metadata.match),
+    metadataLine("grant", metadata.grant),
+  ];
+
+  if (metadata.updateURL) {
+    lines.push(metadataLine("updateURL", metadata.updateURL));
+  }
+  if (metadata.downloadURL) {
+    lines.push(metadataLine("downloadURL", metadata.downloadURL));
+  }
+
+  lines.push(
+    META_END,
+    "",
+    "(() => {",
+    '  "use strict";',
+    "",
+    "})();",
+    "",
+  );
+
+  return lines.join("\n");
+}
+
+export async function createScript(root = process.cwd(), id, options = {}) {
+  validateScriptId(id);
+
+  const workspaceRoot = path.resolve(root);
+  const scriptPath = path.join(workspaceRoot, "scripts", id, `${id}.user.js`);
+  const relativePath = toPosixPath(path.relative(workspaceRoot, scriptPath));
+
+  if (await fileExists(scriptPath)) {
+    throw new Error(`${relativePath} already exists`);
+  }
+
+  const config = await loadConfig(root);
+  const repo = options.repo ?? config.repo;
+  const branch = options.branch ?? config.branch ?? "main";
+  const rawBase = options.rawBase ?? config.rawBase;
+  let scriptUrl;
+  if (repo || rawBase) {
+    scriptUrl = buildScriptUrl(buildRawBase({ repo, branch, rawBase }), relativePath);
+  }
+
+  await mkdir(path.dirname(scriptPath), { recursive: true });
+  await writeFile(
+    scriptPath,
+    renderUserscript({
+      name: options.name ?? titleFromId(id),
+      namespace:
+        options.namespace ??
+        (repo ? `https://github.com/${repo}` : "https://github.com/Volturipper/Tampermonkey"),
+      version: options.version ?? "0.1.0",
+      description: options.description ?? "Tampermonkey userscript.",
+      match: options.match ?? "*://*/*",
+      grant: options.grant ?? "none",
+      updateURL: scriptUrl,
+      downloadURL: scriptUrl,
+    }),
+    "utf8",
+  );
+
+  return {
+    id,
+    path: scriptPath,
+    relativePath,
+    fileName: path.basename(scriptPath),
+  };
+}
+
 export async function syncScriptUrls(root = process.cwd(), options = {}) {
   const config = await loadConfig(root);
   const rawBase = buildRawBase({
@@ -342,6 +433,7 @@ function printHelp() {
 Usage:
   node tools/tm-sync.mjs list
   node tools/tm-sync.mjs check
+  node tools/tm-sync.mjs new <script-id> [--name "Script Name"] [--match URL]
   node tools/tm-sync.mjs bump <script-id> [patch|minor|major|x.y.z]
   node tools/tm-sync.mjs sync-urls --repo <owner/repo> [--branch main]
   node tools/tm-sync.mjs sync-urls --raw-base <https://raw.example/base>
@@ -393,11 +485,32 @@ async function main(argv = process.argv.slice(2)) {
     return;
   }
 
+  if (command === "new") {
+    const { options, positional } = parseOptions(rest);
+    const [id] = positional;
+    if (!id) {
+      throw new Error("new requires <script-id>");
+    }
+    const result = await createScript(root, id, {
+      name: options.name,
+      namespace: options.namespace,
+      version: options.version,
+      description: options.description,
+      match: options.match,
+      grant: options.grant,
+      repo: options.repo,
+      branch: options.branch,
+      rawBase: options["raw-base"],
+    });
+    console.log(`created ${result.relativePath}`);
+    return;
+  }
+
   if (command === "sync-urls") {
     const { options } = parseOptions(rest);
     const results = await syncScriptUrls(root, {
       repo: options.repo,
-      branch: options.branch ?? "main",
+      branch: options.branch,
       rawBase: options["raw-base"],
     });
     for (const result of results) {

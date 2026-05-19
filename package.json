@@ -6,6 +6,7 @@
     "test": "node --test tests/*.test.mjs",
     "tm:list": "node tools/tm-sync.mjs list",
     "tm:check": "node tools/tm-sync.mjs check",
+    "tm:new": "node tools/tm-sync.mjs new",
     "tm:bump": "node tools/tm-sync.mjs bump",
     "tm:sync-urls": "node tools/tm-sync.mjs sync-urls"
   }

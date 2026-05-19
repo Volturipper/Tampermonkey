@@ -7,6 +7,7 @@ import test from "node:test";
 import {
   bumpScriptVersion,
   checkScripts,
+  createScript,
   discoverScripts,
   syncScriptUrls,
 } from "../tools/tm-sync.mjs";
@@ -126,5 +127,45 @@ test("check reports missing update metadata as actionable issues", async () => {
   assert.deepEqual(
     report.scripts[0].issues.map((issue) => issue.code),
     ["missing-updateURL", "missing-downloadURL"],
+  );
+});
+
+test("creates a new userscript with update URLs from config", async () => {
+  const root = await makeWorkspace({
+    "tampermonkey.config.json": JSON.stringify({
+      repo: "owner/from-config",
+      branch: "main",
+    }),
+  });
+
+  const result = await createScript(root, "quick-note", {
+    name: "Quick Note",
+    match: "https://example.test/*",
+  });
+  const content = await readFile(result.path, "utf8");
+
+  assert.equal(result.relativePath, "scripts/quick-note/quick-note.user.js");
+  assert.match(content, /@name\s+Quick Note/);
+  assert.match(content, /@namespace\s+https:\/\/github\.com\/owner\/from-config/);
+  assert.match(content, /@version\s+0\.1\.0/);
+  assert.match(content, /@match\s+https:\/\/example\.test\/\*/);
+  assert.match(
+    content,
+    /@updateURL\s+https:\/\/raw\.githubusercontent\.com\/owner\/from-config\/main\/scripts\/quick-note\/quick-note\.user\.js/,
+  );
+  assert.match(
+    content,
+    /@downloadURL\s+https:\/\/raw\.githubusercontent\.com\/owner\/from-config\/main\/scripts\/quick-note\/quick-note\.user\.js/,
+  );
+});
+
+test("does not overwrite an existing userscript", async () => {
+  const root = await makeWorkspace({
+    "scripts/example/example.user.js": baseUserscript,
+  });
+
+  await assert.rejects(
+    () => createScript(root, "example"),
+    /already exists/,
   );
 });
