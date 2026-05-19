@@ -16,11 +16,14 @@
 - [ ] Add the first real userscript under `scripts/<script-id>/`.
 - [x] Harvest CAC maintainer WebAI artifact for API enhancement v219.
 - [x] Add local intake/validation support for the `cac-api-enhancement` package shape.
-- [ ] Harvest CAC independent reviewer decision for `cac-api-enhancement-v219-20260512.zip`.
+- [x] Add marker-only reviewer decision gate for v219 review.
+- [x] Send short reviewer follow-up requesting exact `REVIEW_DECISION`.
+- [x] Harvest CAC independent reviewer decision for `cac-api-enhancement-v219-20260512.zip`.
+- [x] Complete static local API review summary for v219.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
-- [ ] Register a dedicated CAC runtime smoke conversation before install/update testing.
+- [ ] Select/register a dedicated CAC runtime smoke conversation before any v219 install/update testing.
 - [ ] Enforce one enabled CAC version per browser profile before any GitHub raw auto-update test.
 - [ ] Use `vite-plugin-monkey` only when a script needs build features.
 

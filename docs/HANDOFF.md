@@ -23,8 +23,12 @@ Implemented:
 - 2026-05-20: harvested `cac-api-enhancement-v219-20260512.zip` from maintainer WebAI. Local intake now has `cac-api-enhancement` profile; cross-browser validator accepts `decisions/*gate.json` as blocker mapping when safe defaults pass.
 - Local validation passed for the v219 package: `WEBAI_ASSET_INTAKE --profile cac-api-enhancement` ok; `CAC_CROSS_BROWSER_PACK_VALIDATE` ok with `decision=safe_defaults_candidate_ready_for_independent_review`.
 - Sent the v219 package to CAC independent reviewer through `D:\Codex\CAC_REVIEW_RELAY.cmd send-api-enhancement-review --yes-send --json`. Heartbeat confirmed attachment `cac-api-enhancement-v219-20260512.zip`.
-- Do not install or enable this package until reviewer returns an explicit `REVIEW_DECISION` and local gates are refreshed. Existing stop line remains: no real Continue, prompt submit, artifact auto-download, unattended operation, or production install.
-- Updated existing heartbeat automation `cac-webai-harvest-check` to monitor both maintainer deliverables and reviewer decisions.
+- Added `D:\Codex\CAC_REVIEW_DECISION_GATE.cmd --no-json` for marker-only reviewer checks. Current result after follow-up: `WAITING_NO_REVIEW_DECISION`; no reviewer `REVIEW_DECISION` marker yet.
+- Sent short reviewer follow-up from `prompts/cac-api-enhancement-review-followup.md` using the dedicated Chrome Dev CDP page. The robust send path increased message count, but assistant count had not increased at the last check.
+- Reviewer later returned `REVIEW_DECISION: ACCEPT_FOR_LOCAL_API_REVIEW`. Static local API review is summarized in `docs/CAC_V219_LOCAL_API_REVIEW.md`.
+- Tool fixes during local API review: candidate API summary now parses v219 `Object.freeze` API objects; direct zip validation now extracts zip sources correctly.
+- Do not install or enable this package until a dedicated runtime smoke conversation is selected, exactly one CAC version is enabled in that profile, and fresh gates allow the next bounded step. Existing stop line remains: no real Continue, prompt submit, artifact auto-download, unattended operation, or production install.
+- Updated existing heartbeat automation `cac-webai-harvest-check` to monitor both maintainer deliverables and reviewer decisions through `CAC_WEBAI_DELIVERABLE_GATE` / `CAC_REVIEW_DECISION_GATE`.
 
 GitHub remote: https://github.com/Volturipper/Tampermonkey
 
