@@ -34,6 +34,7 @@ Implemented:
 - Pitfall: do not use generic `D:\Codex\CAC_TAMPERMONKEY_WHITELIST_INSTALL.cmd --verify-only` for this v219 state; it defaults to an old maintainer URL and will falsely report target API missing. Use explicit `--url` and `--conversation-id` for the runtime page.
 - Current default release gate still blocks install/real Continue/unattended/takeover by policy unless owner override is passed. Owner-override read-only gate can clear policy blockers for bounded tests, but do not start unattended/takeover/production.
 - Refreshed `CAC_MONITOR` heartbeat and `cac-version-registry.json` for `v219-api-enhancement-candidate.1`; `CAC_MONITOR status --json` now reports `decision=ACTIVE` and the v219 registry entry.
+- 2026-05-20 heartbeat: sent maintainer feedback prompt `prompts/cac-v219-runtime-feedback-next-candidate.md` to `cac-maintainer-agent-api`, requesting the next complete candidate keep `leaseUntil` / `acquiredAt` and add backward-compatible `until` / `acquired_at` aliases. Direct-send receipt: `D:\Codex\n8n-gpt-orchestrator\scratch\webai-chatgpt-direct-send-latest.json`.
 - Updated existing heartbeat automation `cac-webai-harvest-check` to monitor both maintainer deliverables and reviewer decisions through `CAC_WEBAI_DELIVERABLE_GATE` / `CAC_REVIEW_DECISION_GATE`.
 
 GitHub remote: https://github.com/Volturipper/Tampermonkey

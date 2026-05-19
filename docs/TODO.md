@@ -24,7 +24,8 @@
 - [x] Enforce one enabled CAC version per browser profile before any GitHub raw auto-update test.
 - [x] Run bounded v219 runtime smoke in the dedicated Chrome Dev profile.
 - [x] Refresh CAC monitor heartbeat/version registry so status surfaces no longer describe v216 as current.
-- [ ] Feed v219 runtime findings back into the CAC maintainer loop: keep `leaseUntil` support, ideally add backward-compatible `until` alias in the next CAC candidate.
+- [x] Feed v219 runtime findings back into the CAC maintainer loop: keep `leaseUntil` support and add backward-compatible `until` / `acquired_at` aliases in the next CAC candidate.
+- [ ] Harvest the maintainer response to `prompts/cac-v219-runtime-feedback-next-candidate.md`; accept only a complete package, exact replacement files, or explicit `NO_CHANGE_DECISION`.
 - [ ] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
