@@ -17,6 +17,7 @@ Implemented:
 - CAC long-term plan: `docs/CAC_LONG_TERM_OPTIMIZATION.md`.
 - CAC WebAI full-deliverable request template: `prompts/cac-webai-full-deliverable-request.md`.
 - 2026-05-20: sent the full-deliverable request to `cac-maintainer-agent-api` with `WEBAI_CHATGPT_DIRECT_SEND`; receipt is `D:\Codex\n8n-gpt-orchestrator\scratch\webai-chatgpt-direct-send-latest.json`.
+- CAC API summary tool: `D:\Codex\CAC_API_CONTRACT_SUMMARY.cmd --no-json`, output `D:\Codex\chatgpt-auto-continue\evidence\latest\cac-api-contract-summary-latest.md`.
 
 GitHub remote: https://github.com/Volturipper/Tampermonkey
 

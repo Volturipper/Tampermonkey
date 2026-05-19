@@ -17,6 +17,8 @@ Codex owns local integration, version control, smoke tests, GitHub publishing, a
 
 WebAI/OpenPatch are contractors for large CAC work. They should return complete deliverables, not command streams and not loose patch fragments.
 
+CAC's strategic value is the self-iteration loop: Codex defines acceptance criteria, CAC keeps WebAI role pages moving, WebAI returns artifacts, Codex/other WebAI roles review, and CAC asks for the next correction until a candidate passes gates.
+
 Reject WebAI work when it lacks:
 
 - full changed files or exact file-by-file diff;
@@ -28,6 +30,7 @@ Reject WebAI work when it lacks:
 ## Token-Efficient Rules
 
 - Do not read full CAC source or long ChatGPT history by default.
+- For CAC API questions, run `D:\Codex\CAC_API_CONTRACT_SUMMARY.cmd --no-json` and read `D:\Codex\chatgpt-auto-continue\evidence\latest\cac-api-contract-summary-latest.md` first.
 - Start with `CAC_TOOL_INVENTORY`, `CAC_MONITOR`, n8n latest gates, version registry, role registry, and curated handoff docs.
 - Read source only by targeted search, function/symbol slice, or WebAI-provided exact file reference.
 - Package context for WebAI instead of pasting long files into Codex chat.
@@ -93,3 +96,4 @@ Primary role:
 4. Send package to independent reviewer.
 5. Validate locally in an isolated profile with exactly one CAC version enabled.
 6. Publish only after fresh gates pass.
+7. Use CAC to continue the maintainer/reviewer loop only when the previous WebAI response satisfies the delivery contract or clearly names missing evidence.

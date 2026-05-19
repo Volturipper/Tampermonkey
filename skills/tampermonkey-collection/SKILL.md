@@ -46,7 +46,7 @@ Keep Codex focused on local repo actions: code, tests, Git, release checks, and 
 
 ## CAC Work
 
-For ChatGPT Auto Continue work, read `docs/CAC_LONG_TERM_OPTIMIZATION.md` before touching source or browser state. Use existing CAC status/gate commands and WebAI/OpenPatch delivery tools before reading long CAC code. For GitHub raw auto-update testing, require the dedicated Chrome Dev profile and exactly one enabled CAC userscript version in that browser profile.
+For ChatGPT Auto Continue work, read `docs/CAC_LONG_TERM_OPTIMIZATION.md` before touching source or browser state. Use `D:\Codex\CAC_API_CONTRACT_SUMMARY.cmd --no-json` before reading CAC API code. Use existing CAC status/gate commands and WebAI/OpenPatch delivery tools before reading long CAC code. For GitHub raw auto-update testing, require the dedicated Chrome Dev profile and exactly one enabled CAC userscript version in that browser profile. Treat CAC as the mechanism for WebAI self-iteration: maintainers produce complete artifacts, reviewers critique, Codex validates, then CAC continues the loop.
 
 ## Browser Profile
 
