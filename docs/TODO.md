@@ -59,6 +59,8 @@
 - [x] Route v222 to the independent reviewer with `CAC_REVIEW_RELAY`, attaching `cac-ui-preserving-api-merge-v222-20260512.zip`.
 - [x] Add low-token continuation helper `npm run cac:lane` so future turns start from one compact status surface instead of several separate gate reads.
 - [x] Add `npm run cac:review-prompt` to generate reviewer prompts from ledger/package metadata and avoid hand-written package/hash/scope drift.
+- [x] Add read-only `npm run cac:install-ready` / `D:\Codex\CAC_INSTALL_READY.cmd` so install decisions become `WAIT_REVIEW`, `BLOCKED`, or `READY_FOR_BOUNDED_REPLACEMENT_INSTALL`.
+- [x] Add static `npm run cac:ui-smoke` / `D:\Codex\CAC_UI_PARITY_SMOKE.cmd` to verify full-panel UI markers before any browser install.
 - [ ] Harvest a fresh package-specific v222 reviewer decision with `CAC_REVIEW_DECISION_GATE --package "cac-ui-preserving-api-merge-v222-20260512.zip" --no-json`.
 - [ ] Restore CAC user-facing UI as a first-class requirement: base the next full candidate on the existing v216 single-script merge/safe-defaults UI, not a new mini panel.
 - [ ] Improve CAC panel UI/UX from `docs/CAC_UI_UX_ROADMAP.md`: preserve full UI, use OSS assets only with pinned source/license, and plan frontend/controller/API decoupling.

@@ -8,6 +8,8 @@
     "tm:check": "node tools/tm-sync.mjs check",
     "tm:raw-check": "node tools/tm-sync.mjs raw-check",
     "cac:lane": "node tools/cac-lane-status.mjs --compact",
+    "cac:install-ready": "node tools/cac-install-ready.mjs",
+    "cac:ui-smoke": "node tools/cac-ui-parity-smoke.mjs",
     "cac:versions": "node tools/cac-version-ledger.mjs",
     "cac:review-prompt": "node tools/cac-review-prompt-gen.mjs",
     "tm:new": "node tools/tm-sync.mjs new",

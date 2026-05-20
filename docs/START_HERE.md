@@ -21,6 +21,8 @@ npm run tm:sync-urls -- --repo OWNER/REPO --branch main
 npm run tm:raw-check
 npm run cac:versions
 npm run cac:lane
+npm run cac:install-ready
+npm run cac:ui-smoke
 ```
 
 `tm:sync-urls` writes both `@updateURL` and `@downloadURL` to GitHub raw URLs. It also reads `tampermonkey.config.json` when present; keep `tampermonkey.config.example.json` as the tracked template.
@@ -36,6 +38,14 @@ Root shortcut: `D:\Codex\CAC_LANE_STATUS.cmd --compact`.
 `cac:review-prompt` generates a concise independent-review request from the ledger and extracted package metadata. Use it before hand-editing reviewer prompts.
 
 Root shortcut: `D:\Codex\CAC_REVIEW_PROMPT_GEN.cmd --id <ledger-entry>`.
+
+`cac:install-ready` answers whether the waiting CAC candidate is ready for a bounded replacement install. It combines lane status, package-specific review decision, single-version state, and static UI smoke. It is read-only and treats default release-gate install blocking as a warning for explicit scoped replacement, not as unattended/production approval.
+
+Root shortcut: `D:\Codex\CAC_INSTALL_READY.cmd --id <ledger-entry>`.
+
+`cac:ui-smoke` performs a static UI parity smoke on the waiting candidate runtime script. It checks full-size UI markers, panel controls, scope controls, prompt library, diagnostics, artifact controls, API bridge, safe defaults, and auto-update metadata warnings.
+
+Root shortcut: `D:\Codex\CAC_UI_PARITY_SMOKE.cmd --id <ledger-entry>`.
 
 ## Git Decision
 
