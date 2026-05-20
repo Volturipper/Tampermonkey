@@ -33,3 +33,16 @@ Escalation decisions:
 
 For v222, the current smart path is not to install yet. Static UI smoke passes,
 but the review decision gate still waits for a package-specific marker.
+
+Second reviewer route used for v222:
+
+1. Generate a self-contained prompt that does not depend on old CAC reviewer
+   history: `prompts/cac-v222-second-reviewer-openpatch.md`.
+2. Send the same zip to the reviewer clone with scoped Chrome Dev CDP control:
+   `D:\Codex\OPENPATCH_CHATGPT_CONTROL.cmd send-prompt --url "https://chatgpt.com/c/69fc8023-bbd0-83aa-8428-8151a8ebb35f" --attach-file "D:\Gemini DL\cac-ui-preserving-api-merge-v222-20260512.zip" --prompt-file "D:\Codex\Tampermonkey\prompts\cac-v222-second-reviewer-openpatch.md" --heartbeat --heartbeat-path "scratch\openpatch-repo-reviewer-heartbeat-latest.json" --event task_sent`.
+3. Accept the send only when the composer is cleared and the user-message or
+   total message count increases. `ok=true` with non-zero `inputBytes` is a
+   false-positive submit and must not advance the lane.
+4. Check that reviewer clone only through compact surfaces:
+   `D:\Codex\N8N_WEB_AI_ROLE_HEARTBEAT_LATEST.cmd --profile openpatch-repo-reviewer`
+   and `D:\Codex\CAC_REVIEW_DECISION_GATE.cmd --url "https://chatgpt.com/c/69fc8023-bbd0-83aa-8428-8151a8ebb35f" --package "cac-ui-preserving-api-merge-v222-20260512.zip" --no-json`.
