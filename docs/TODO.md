@@ -69,6 +69,7 @@
 - [x] Escalate v222 to a second independent reviewer clone (`openpatch-repo-reviewer`) after the primary reviewer follow-up exceeded the threshold.
 - [x] Patch WebAI/OpenPatch prompt-send success criteria after a false-positive send: require composer cleared plus message-count increase, not just `ok=true` or attachment present.
 - [x] Record the anti-token-waste rule: large WebAI work should go through OpenPatch/WebAI Transfer/file relay and compact receipts, not Codex reading long WebAI chat.
+- [x] Extend `CAC_LANE_STATUS` with OpenPatch second-reviewer heartbeat and WebAI Transfer receipt summary so review waits route through compact transport surfaces.
 - [ ] Harvest a fresh package-specific v222 reviewer decision with `CAC_REVIEW_DECISION_GATE --package "cac-ui-preserving-api-merge-v222-20260512.zip" --no-json`.
 - [ ] Restore CAC user-facing UI as a first-class requirement: base the next full candidate on the existing v216 single-script merge/safe-defaults UI, not a new mini panel.
 - [ ] Improve CAC panel UI/UX from `docs/CAC_UI_UX_ROADMAP.md`: preserve full UI, use OSS assets only with pinned source/license, and plan frontend/controller/API decoupling.

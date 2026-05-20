@@ -35,6 +35,12 @@ npm run cac:ui-smoke
 
 Root shortcut: `D:\Codex\CAC_LANE_STATUS.cmd --compact`.
 
+It also reports the transport lane for CAC review work:
+`transport_second_reviewer` from the OpenPatch reviewer heartbeat and
+`transport_webai` from WebAI Transfer receipts. If a second reviewer has already
+been sent, the next action is to wait for package review markers through those
+transport surfaces, not to read long WebAI chat or send another follow-up.
+
 `cac:review-prompt` generates a concise independent-review request from the ledger and extracted package metadata. Use it before hand-editing reviewer prompts.
 
 Root shortcut: `D:\Codex\CAC_REVIEW_PROMPT_GEN.cmd --id <ledger-entry>`.

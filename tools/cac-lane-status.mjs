@@ -16,6 +16,8 @@ const DEFAULT_FILES = {
   reviewGate: path.join(CAC_REPO_ROOT, "evidence", "latest", "cac-review-decision-gate-latest.json"),
   tampermonkeyVerify: path.join(N8N_ROOT, "scratch", "cac-tampermonkey-whitelist-install-latest.json"),
   reviewerHeartbeat: path.join(N8N_ROOT, "scratch", "cac-independent-review-webai-heartbeat.json"),
+  secondReviewerHeartbeat: path.join(N8N_ROOT, "scratch", "openpatch-repo-reviewer-heartbeat-latest.json"),
+  transferReceipts: path.join(N8N_ROOT, "scratch", "webai-transfer-receipts-latest.json"),
 };
 
 function parseArgs(argv) {
@@ -95,6 +97,7 @@ function buildNext(summary) {
   if (!summary.runtime?.singleVersionOk) return "restore_single_enabled_cac_before_any_install";
   const reviewDecision = summary.review?.decision || "";
   if (summary.waiting.length && /WAITING/i.test(reviewDecision)) {
+    if (summary.transport?.secondReviewer?.event) return "wait_for_package_review_marker_via_transport_surfaces";
     return "wait_for_package_review_marker_or_send_short_followup";
   }
   if (summary.waiting.length && /ACCEPT/i.test(reviewDecision)) {
@@ -173,6 +176,21 @@ export async function buildLaneStatus(options = {}) {
       status: states.reviewerHeartbeat.data?.latest?.status || states.reviewerHeartbeat.data?.status || "",
       ageSec: states.reviewerHeartbeat.ageSec,
     },
+    transport: {
+      secondReviewer: {
+        event: states.secondReviewerHeartbeat.data?.latest?.event || states.secondReviewerHeartbeat.data?.latest_event || "",
+        chatUrl: states.secondReviewerHeartbeat.data?.latest?.chat_url || "",
+        ageSec: states.secondReviewerHeartbeat.ageSec,
+        targetRepo: states.secondReviewerHeartbeat.data?.latest?.target_repo || "",
+      },
+      webaiTransfer: {
+        decision: states.transferReceipts.data?.decision || "",
+        sendReceiptOk: states.transferReceipts.data?.summary?.sendReceiptOk ?? null,
+        downloadReceiptOk: states.transferReceipts.data?.summary?.downloadReceiptOk ?? null,
+        gaps: Array.isArray(states.transferReceipts.data?.summary?.gaps) ? states.transferReceipts.data.summary.gaps : [],
+        ageSec: states.transferReceipts.ageSec,
+      },
+    },
     paths: Object.fromEntries(Object.entries(files).map(([key, filePath]) => [key, filePath])),
   };
   summary.next = buildNext(summary);
@@ -191,6 +209,8 @@ function printCompact(summary) {
   console.log(`review=${summary.review.decision || "unknown"} package=${summary.review.package || "unknown"} markers=${summary.review.markerCount ?? "unknown"}`);
   console.log(`monitor_fresh=${summary.monitor.fresh} monitor_age_sec=${summary.monitor.ageSec ?? "unknown"}`);
   console.log(`heartbeat=${summary.reviewerHeartbeat.event || "unknown"}:${summary.reviewerHeartbeat.status || "unknown"}`);
+  console.log(`transport_second_reviewer=${summary.transport.secondReviewer.event || "none"} age_sec=${summary.transport.secondReviewer.ageSec ?? "unknown"}`);
+  console.log(`transport_webai=${summary.transport.webaiTransfer.decision || "unknown"} send_ok=${summary.transport.webaiTransfer.sendReceiptOk ?? "unknown"} download_ok=${summary.transport.webaiTransfer.downloadReceiptOk ?? "unknown"}`);
   console.log(`next=${summary.next}`);
 }
 

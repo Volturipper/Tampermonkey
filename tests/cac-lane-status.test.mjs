@@ -29,6 +29,8 @@ test("summarizes current runtime, waiting review, and single-version state", asy
     reviewGate: path.join(root, "review.json"),
     tampermonkeyVerify: path.join(root, "tm.json"),
     reviewerHeartbeat: path.join(root, "heartbeat.json"),
+    secondReviewerHeartbeat: path.join(root, "second-heartbeat.json"),
+    transferReceipts: path.join(root, "transfer.json"),
   };
   await writeJson(files.ledger, {
     schema: "cac.version_ledger.v1",
@@ -44,6 +46,8 @@ test("summarizes current runtime, waiting review, and single-version state", asy
   await writeJson(files.reviewGate, { gate: { decision: "WAITING_NO_PACKAGE_REVIEW_DECISION", requiredPackage: "cac-v222.zip", markerCount: 4 } });
   await writeJson(files.tampermonkeyVerify, { tampermonkey_after: { enabled_count: 1 }, verify: { targetSmoke: { hasApi: true }, others: [{ smoke: { hasApi: false } }] } });
   await writeJson(files.reviewerHeartbeat, { event: "task_sent", status: "waiting_for_v222" });
+  await writeJson(files.secondReviewerHeartbeat, { latest: { event: "task_sent", chat_url: "https://chatgpt.com/c/second", target_repo: "Volturipper/openpatch-review-relay-20260506" } });
+  await writeJson(files.transferReceipts, { decision: "ATTENTION", summary: { sendReceiptOk: false, downloadReceiptOk: true, gaps: ["latest_send_receipt_stale"] } });
 
   const summary = await buildLaneStatus({ files, maxFreshMinutes: 60 });
 
@@ -51,5 +55,7 @@ test("summarizes current runtime, waiting review, and single-version state", asy
   assert.equal(summary.waiting[0].id, "v222");
   assert.equal(summary.runtime.singleVersionOk, true);
   assert.equal(summary.review.decision, "WAITING_NO_PACKAGE_REVIEW_DECISION");
-  assert.equal(summary.next, "wait_for_package_review_marker_or_send_short_followup");
+  assert.equal(summary.transport.secondReviewer.event, "task_sent");
+  assert.equal(summary.transport.webaiTransfer.downloadReceiptOk, true);
+  assert.equal(summary.next, "wait_for_package_review_marker_via_transport_surfaces");
 });
