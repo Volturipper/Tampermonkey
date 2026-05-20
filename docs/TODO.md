@@ -48,6 +48,7 @@
 - [x] Route v221 for independent review; focus on read-only/text-free `selfIterationPacket`, current contract-summary alignment, one-version safety, and safe defaults.
 - [ ] Harvest the v221 independent reviewer decision with `CAC_REVIEW_DECISION_GATE --package "cac-api-enhancement-v221-self-iteration-20260512.zip"`; require a fresh package-specific marker.
 - [ ] Restore CAC user-facing UI as a first-class requirement: base the next full candidate on the existing v216 single-script merge/safe-defaults UI, not a new mini panel.
+- [ ] Improve CAC panel UI/UX from `docs/CAC_UI_UX_ROADMAP.md`: preserve full UI, use OSS assets only with pinned source/license, and plan frontend/controller/API decoupling.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
 - [ ] Drive CAC API enhancements from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`.
 - [ ] Use `vite-plugin-monkey` only when a script needs build features.
