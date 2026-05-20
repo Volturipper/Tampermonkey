@@ -19,6 +19,11 @@ WebAI/OpenPatch are contractors for large CAC work. They should return complete 
 
 CAC's strategic value is the self-iteration loop: Codex defines acceptance criteria, CAC keeps WebAI role pages moving, WebAI returns artifacts, Codex/other WebAI roles review, and CAC asks for the next correction until a candidate passes gates.
 
+OpenPatch/WebAI Transfer are the default bridge for large WebAI work. Codex
+should not spend context reading long WebAI conversations or reconstructing
+answers from page text. WebAI must hand back a file/zip/GitHub commit/receipt
+or a short marker-bearing status packet that local tools can verify.
+
 Reject WebAI work when it lacks:
 
 - full changed files or exact file-by-file diff;
@@ -30,6 +35,9 @@ Reject WebAI work when it lacks:
 ## Token-Efficient Rules
 
 - Do not read full CAC source or long ChatGPT history by default.
+- Do not treat a WebAI page as an in-context collaborator for long dialog.
+  Treat it as an async worker behind OpenPatch/WebAI Transfer, then harvest
+  compact receipts, markers, manifests, and artifacts.
 - For CAC API questions, run `D:\Codex\CAC_API_CONTRACT_SUMMARY.cmd --no-json` and read `D:\Codex\chatgpt-auto-continue\evidence\latest\cac-api-contract-summary-latest.md` first.
 - Drive API changes from `docs/CAC_API_ENHANCEMENT_BACKLOG.md`; do not open the large script until the summary/backlog is insufficient.
 - Start with `CAC_TOOL_INVENTORY`, `CAC_MONITOR`, n8n latest gates, version registry, role registry, and curated handoff docs.
@@ -78,6 +86,7 @@ Use existing CAC/OpenPatch tooling first:
 
 - `D:\Codex\WEBAI_ASSET_INTAKE.cmd`
 - `D:\Codex\WEBAI_CHATGPT_DIRECT_SEND.cmd`
+- `D:\Codex\WEB_AI_TRANSFER_DELIVER.cmd`
 - `D:\Codex\CAC_REVIEW_RELAY.cmd`
 - `D:\Codex\CAC_CROSS_BROWSER_PACK_VALIDATE.cmd`
 - `D:\Codex\OPENPATCH_REVIEW_RELAY.cmd`

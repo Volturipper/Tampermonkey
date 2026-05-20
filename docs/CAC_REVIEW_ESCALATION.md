@@ -8,6 +8,9 @@ Current principle:
 - Do not install a waiting CAC candidate just because the reviewer is slow.
 - Do not keep writing custom follow-up prompts by hand.
 - Do not read long ChatGPT history while waiting.
+- Do not pull WebAI long conversation text into Codex. Use OpenPatch/GitHub
+  delivery or WebAI Transfer/file relay, then harvest compact heartbeat,
+  receipt, marker, manifest, and package surfaces.
 - Keep exactly one enabled CAC userscript in the browser profile.
 
 Low-token flow:
