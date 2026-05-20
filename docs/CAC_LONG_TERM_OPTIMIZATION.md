@@ -5,11 +5,11 @@ Date: 2026-05-20
 ## Current Facts
 
 - CAC means ChatGPT Auto Continue.
-- Current reliable baseline from local status surfaces: `v216-single-script-merge-safe-defaults-20260510.1`.
-- Registry also mentions v217-class candidates, but version number alone is not a release gate.
-- Latest monitor/release evidence is stale. Treat old PASS results as historical until refreshed.
-- Current state supports supervised dry-run on a dedicated runtime page; real Continue/unattended operation remains blocked unless a fresh action-time gate permits it.
-- Current runtime target probe reports no registered/open runtime smoke conversation.
+- Current runtime facts must come from the local status surfaces and `docs/START_HERE.md`, not from this planning note.
+- Current installed public CAC test lane is the public workspace script under `scripts/cac-v220-runtime/` with GitHub raw update URLs; newer v221 artifacts are candidate packages until package-specific review and local gates pass.
+- Version number alone is not a release gate. Promotion requires package hash, independent review, local checks, scoped install/update smoke, and release gate.
+- The current v220/v221 API candidates are not UI-complete. The full human-facing UI baseline is the v216 single-script merge/safe-defaults package recorded in `docs/CAC_UI_UX_ROADMAP.md`.
+- Real Continue, unattended operation, production install, and takeover remain blocked unless a fresh action-time gate explicitly permits a bounded test.
 
 ## Operating Model
 
