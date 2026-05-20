@@ -1,6 +1,6 @@
 {
   "schema": "cac.version_ledger.v1",
-  "updatedAt": "2026-05-20T00:55:00+08:00",
+  "updatedAt": "2026-05-20T12:56:00+08:00",
   "sourceOfTruth": [
     "D:\\Codex\\Tampermonkey\\docs\\START_HERE.md",
     "D:\\Codex\\CAC_MONITOR.cmd status --json",
@@ -10,13 +10,13 @@
     "npm run tm:raw-check"
   ],
   "currentInstalled": {
-    "id": "v220-public-runtime-2026.5.221",
-    "scriptId": "cac-v220-runtime",
-    "metadataVersion": "2026.5.221",
-    "runtimeVersion": "v220-lease-alias-candidate.1",
+    "id": "v221-self-iteration-packet-candidate.1",
+    "scriptId": "cac-v221-self-iteration-candidate",
+    "metadataVersion": "2026.05.12.v221-self-iteration-packet-candidate.1",
+    "runtimeVersion": "v221-self-iteration-packet-candidate.1",
     "installState": "installed_scoped_single_enabled",
     "uiCompleteness": "api_only_not_ui_complete",
-    "rawSha256": "9a06ae1907f1309969f559a142ee4c5d2f1bcefc088320dfcd1e643d9595997f"
+    "sourceSha256": "8d8b1b4f99d9913c1d17b3649183d3461d8b44c351bf36b0db73a287670bb927"
   },
   "promotionRule": {
     "requiredOrder": [
@@ -87,8 +87,8 @@
       "uiCompleteness": "api_only_not_ui_complete",
       "apiCompleteness": "lease_alias_api_27_keys",
       "reviewState": "accepted_for_local_api_review",
-      "installState": "installed_scoped_single_enabled",
-      "notes": "Current installed public raw update lane. Release gate still blocks real, unattended, production, and takeover."
+      "installState": "replaced_by_v221",
+      "notes": "Historical public raw update lane. Replaced by v221 on the dedicated runtime page; release gate still blocks real, unattended, production, and takeover."
     },
     {
       "id": "v221-self-iteration-packet-candidate.1",
@@ -100,10 +100,10 @@
       "runtimeVersion": "v221-self-iteration-packet-candidate.1",
       "uiCompleteness": "api_only_not_ui_complete",
       "apiCompleteness": "self_iteration_packet_28_keys",
-      "reviewState": "waiting_no_package_review_decision",
+      "reviewState": "accepted_for_local_api_review_and_supervised_smoke",
       "reviewGate": "D:\\Codex\\CAC_REVIEW_DECISION_GATE.cmd --package \"cac-api-enhancement-v221-self-iteration-20260512.zip\" --no-json",
-      "installState": "not_installed",
-      "notes": "Treat as bounded API review candidate only unless UI parity is restored."
+      "installState": "installed_scoped_single_enabled",
+      "notes": "Installed only on the dedicated runtime smoke conversation after replacing v220, not alongside it. API smoke reports 28 keys including selfIterationPacket; supervised dry-run, lease gate, heartbeat ingest, and release gate passed. Treat as bounded API review candidate only unless UI parity is restored."
     }
   ]
 }

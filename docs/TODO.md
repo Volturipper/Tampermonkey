@@ -47,7 +47,12 @@
 - [x] Harvest CAC maintainer response for `v221-self-iteration-packet`; accepted complete package `cac-api-enhancement-v221-self-iteration-20260512.zip`.
 - [x] Run static v221 intake, cross-browser package validation, contract-summary check, and targeted `selfIterationPacket` check without installing v221.
 - [x] Route v221 for independent review; focus on read-only/text-free `selfIterationPacket`, current contract-summary alignment, one-version safety, and safe defaults.
-- [ ] Harvest the v221 independent reviewer decision with `CAC_REVIEW_DECISION_GATE --package "cac-api-enhancement-v221-self-iteration-20260512.zip"`; require a fresh package-specific marker.
+- [x] Send a v221-specific reviewer follow-up prompt after the package decision gate still waited for a fresh marker.
+- [x] Enhance `npm run cac:versions` so the CAC version ledger checks recorded local source files and SHA256s instead of requiring manual path/hash inspection.
+- [x] Harvest the v221 independent reviewer decision with `CAC_REVIEW_DECISION_GATE --package "cac-api-enhancement-v221-self-iteration-20260512.zip"`; reviewer returned `ACCEPT_FOR_LOCAL_API_REVIEW`.
+- [x] Replace v220 with v221 only on the dedicated runtime page, preserving exactly one enabled CAC userscript.
+- [x] Run v221 API smoke, supervised dry-run smoke, lease gate, heartbeat ingest, scoped Tampermonkey verify, monitor gate, and default release gate refresh.
+- [x] Fix `CAC_API_CONTRACT_SUMMARY` so v221 `READ_API_NAMES.slice()` / `COMMAND_API_NAMES.slice()` are summarized as 16 read APIs and 10 command APIs instead of `unknown`.
 - [ ] Restore CAC user-facing UI as a first-class requirement: base the next full candidate on the existing v216 single-script merge/safe-defaults UI, not a new mini panel.
 - [ ] Improve CAC panel UI/UX from `docs/CAC_UI_UX_ROADMAP.md`: preserve full UI, use OSS assets only with pinned source/license, and plan frontend/controller/API decoupling.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.

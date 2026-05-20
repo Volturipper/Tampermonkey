@@ -26,7 +26,7 @@ npm run cac:versions
 
 `tm:raw-check` fetches each script's public raw `@updateURL` / `@downloadURL`, compares remote `@version` with the local file, and prints the fetched SHA256. Run it before browser update checks.
 
-`cac:versions` reads `docs/CAC_VERSION_LEDGER.json` and prints the current CAC runtime, waiting candidates, UI baseline records, review state, install state, and whether a record is API-only or UI-complete. Use it before deciding which CAC artifact is current.
+`cac:versions` reads `docs/CAC_VERSION_LEDGER.json` and prints the current CAC runtime, waiting candidates, UI baseline records, review state, install state, and whether a record is API-only or UI-complete. It also checks recorded local source files and expected SHA256 values, so use it before deciding which CAC artifact is current.
 
 ## Git Decision
 
@@ -65,18 +65,18 @@ Current bounded runtime target:
 https://chatgpt.com/c/69fb92be-976c-83a6-9703-84ba859e4a06
 ```
 
-As of 2026-05-20, v220 has replaced v219 on that dedicated runtime page in the Chrome Dev profile. Use explicit `--url` / `--conversation-id` with CAC Tampermonkey verify/install helpers; the generic verify default points at an older maintainer page and can produce a false failure.
+As of 2026-05-20, v221 has replaced v220 on that dedicated runtime page in the Chrome Dev profile. Use explicit `--url` / `--conversation-id` with CAC Tampermonkey verify/install helpers; the generic verify default points at an older maintainer page and can produce a false failure.
 
-Current installed CAC runtime: `v220-lease-alias-candidate.1`; current Tampermonkey metadata version is `2026.5.221` from the public workspace script. Verified state: one enabled CAC userscript, target page API present, other ChatGPT pages without CAC API, API smoke passed, supervised dry-run passed, lease gate passed, default release gate still blocks real Continue, unattended operation, production install, and takeover.
+Current installed CAC runtime: `v221-self-iteration-packet-candidate.1`; current Tampermonkey metadata version is `2026.05.12.v221-self-iteration-packet-candidate.1` from the reviewed local candidate package, not a UI-complete release. Verified state: one enabled CAC userscript, target page API present, other ChatGPT pages without CAC API, API smoke passed with 28 keys including `selfIterationPacket`, supervised dry-run passed with zero real actions, lease gate passed, monitor is active/supervised-ready, and default release gate still blocks real Continue, unattended operation, production install, and takeover.
 
-Public raw update source for CAC v220 workspace testing:
+Public raw update source for historical CAC v220 workspace testing:
 
 ```text
 scripts/cac-v220-runtime/cac-v220-runtime.user.js
 https://raw.githubusercontent.com/Volturipper/Tampermonkey/main/scripts/cac-v220-runtime/cac-v220-runtime.user.js
 ```
 
-Do not use `Volturipper/chatgpt-auto-continue-review` raw URLs for cross-browser Tampermonkey update checks; that repo is private, so unauthenticated raw URLs return 404.
+Do not use `Volturipper/chatgpt-auto-continue-review` raw URLs for cross-browser Tampermonkey update checks; that repo is private, so unauthenticated raw URLs return 404. Do not publish or raw-update-test v221 until the UI-preserving/full-panel plan is decided, because v221 is still API-only.
 
 Safe raw-update test protocol for CAC:
 
