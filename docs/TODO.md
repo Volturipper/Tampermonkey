@@ -53,6 +53,8 @@
 - [x] Replace v220 with v221 only on the dedicated runtime page, preserving exactly one enabled CAC userscript.
 - [x] Run v221 API smoke, supervised dry-run smoke, lease gate, heartbeat ingest, scoped Tampermonkey verify, monitor gate, and default release gate refresh.
 - [x] Fix `CAC_API_CONTRACT_SUMMARY` so v221 `READ_API_NAMES.slice()` / `COMMAND_API_NAMES.slice()` are summarized as 16 read APIs and 10 command APIs instead of `unknown`.
+- [x] Send `prompts/cac-v222-ui-preserving-merge-request.md` to the CAC maintainer for a full UI-preserving merge package.
+- [ ] Harvest the v222 UI-preserving maintainer response with `CAC_WEBAI_DELIVERABLE_GATE --project chatgpt-auto-continue --role maintainer --no-json`; accept only a complete package, exact diff, or exact missing-evidence request.
 - [ ] Restore CAC user-facing UI as a first-class requirement: base the next full candidate on the existing v216 single-script merge/safe-defaults UI, not a new mini panel.
 - [ ] Improve CAC panel UI/UX from `docs/CAC_UI_UX_ROADMAP.md`: preserve full UI, use OSS assets only with pinned source/license, and plan frontend/controller/API decoupling.
 - [ ] Use CAC to drive the maintainer/reviewer self-iteration loop after each acceptable WebAI deliverable.
