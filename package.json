@@ -13,6 +13,7 @@
     "cac:versions": "node tools/cac-version-ledger.mjs",
     "cac:review-prompt": "node tools/cac-review-prompt-gen.mjs",
     "cac:review-followup": "node tools/cac-review-followup.mjs",
+    "cac:review-escalate": "node tools/cac-review-escalate.mjs",
     "tm:new": "node tools/tm-sync.mjs new",
     "tm:bump": "node tools/tm-sync.mjs bump",
     "tm:sync-urls": "node tools/tm-sync.mjs sync-urls"

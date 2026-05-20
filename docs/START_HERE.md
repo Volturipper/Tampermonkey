@@ -43,6 +43,12 @@ Root shortcut: `D:\Codex\CAC_REVIEW_PROMPT_GEN.cmd --id <ledger-entry>`.
 
 Root shortcut: `D:\Codex\CAC_REVIEW_FOLLOWUP.cmd --id <ledger-entry> --out prompts/<file>.md`.
 
+`cac:review-escalate` decides whether to wait, send a follow-up, escalate to a second reviewer, prepare an owner fallback packet, or proceed to bounded replacement planning. It is read-only.
+
+Root shortcut: `D:\Codex\CAC_REVIEW_ESCALATE.cmd --id <ledger-entry>`.
+
+See `docs/CAC_REVIEW_ESCALATION.md`.
+
 `cac:install-ready` answers whether the waiting CAC candidate is ready for a bounded replacement install. It combines lane status, package-specific review decision, single-version state, and static UI smoke. It is read-only and treats default release-gate install blocking as a warning for explicit scoped replacement, not as unattended/production approval.
 
 Root shortcut: `D:\Codex\CAC_INSTALL_READY.cmd --id <ledger-entry>`.
