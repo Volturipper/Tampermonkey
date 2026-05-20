@@ -77,6 +77,7 @@ Implemented:
 - 2026-05-20: added v222 review prompt `prompts/cac-v222-ui-preserving-independent-review.md`; backed up `D:\Codex\n8n-gpt-orchestrator\prompts\cac-api-enhancement-independent-review-20260520.md` to `.bak-20260520-1334-v222-ui-preserving`, then replaced it with v222 review scope for `CAC_REVIEW_RELAY`.
 - Sent v222 to the independent reviewer with `D:\Codex\CAC_REVIEW_RELAY.cmd send-api-enhancement-review --attach-file "D:\Gemini DL\cac-ui-preserving-api-merge-v222-20260512.zip" --yes-send --json`; result `sent=true`, attachment present. Role heartbeat `cac-independent-reviewer` is refreshed as `task_sent` / `waiting_for_v222_ui_preserving_review`. Current package gate: `WAITING_NO_PACKAGE_REVIEW_DECISION`; do not install v222 until a fresh package-specific reviewer marker is accepted.
 - Pitfall: generic `WEB_AI_TRANSFER_DELIVER` with maintainer-source then reviewer-target timed out at `seed_not_ready`; for this CAC review lane, prefer the dedicated `CAC_REVIEW_RELAY` path with explicit attachment.
+- Efficiency improvement: use `npm run cac:lane` or root shortcut `D:\Codex\CAC_LANE_STATUS.cmd --compact` as the first continuation check. It reads local latest JSON/status files and summarizes current runtime, waiting package, single-version state, release gate, review gate, and next action in one compact surface. Use `npm run cac:review-prompt -- --id <ledger-entry>` or `D:\Codex\CAC_REVIEW_PROMPT_GEN.cmd --id <ledger-entry>` before manually editing future reviewer prompts.
 
 GitHub remote: https://github.com/Volturipper/Tampermonkey
 

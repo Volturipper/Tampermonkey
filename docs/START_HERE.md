@@ -20,6 +20,7 @@ npm run tm:bump -- example-versioned patch
 npm run tm:sync-urls -- --repo OWNER/REPO --branch main
 npm run tm:raw-check
 npm run cac:versions
+npm run cac:lane
 ```
 
 `tm:sync-urls` writes both `@updateURL` and `@downloadURL` to GitHub raw URLs. It also reads `tampermonkey.config.json` when present; keep `tampermonkey.config.example.json` as the tracked template.
@@ -27,6 +28,14 @@ npm run cac:versions
 `tm:raw-check` fetches each script's public raw `@updateURL` / `@downloadURL`, compares remote `@version` with the local file, and prints the fetched SHA256. Run it before browser update checks.
 
 `cac:versions` reads `docs/CAC_VERSION_LEDGER.json` and prints the current CAC runtime, waiting candidates, UI baseline records, review state, install state, and whether a record is API-only or UI-complete. It also checks recorded local source files and expected SHA256 values, so use it before deciding which CAC artifact is current.
+
+`cac:lane` is the first low-token CAC continuation check. It reads only local latest JSON/status files plus `docs/CAC_VERSION_LEDGER.json`, then prints current runtime, waiting candidate, single-version state, release gate, review gate, heartbeat, and the next safe action. It does not install, click Continue, submit prompts, download artifacts, or read secrets.
+
+Root shortcut: `D:\Codex\CAC_LANE_STATUS.cmd --compact`.
+
+`cac:review-prompt` generates a concise independent-review request from the ledger and extracted package metadata. Use it before hand-editing reviewer prompts.
+
+Root shortcut: `D:\Codex\CAC_REVIEW_PROMPT_GEN.cmd --id <ledger-entry>`.
 
 ## Git Decision
 
