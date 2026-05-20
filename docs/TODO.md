@@ -38,6 +38,7 @@
 - [x] After pushing the public script, verify unauthenticated raw fetch returns public metadata version `2026.5.220`.
 - [x] Replace the installed v220 metadata with the public-update variant while preserving exactly one enabled CAC row in the Chrome Dev Tampermonkey profile.
 - [x] Add reusable public raw preflight command `npm run tm:raw-check`.
+- [x] Add reusable CAC version ledger command `npm run cac:versions`.
 - [x] Plan the next GitHub raw auto-update test from the restored single-version state; do not enable another CAC version alongside `2026.5.220`.
 - [x] Execute the planned CAC raw auto-update test with a metadata-only version bump on the existing public script URL.
 - [x] Refresh CAC WebAI role heartbeats before outsourcing the next CAC artifact.

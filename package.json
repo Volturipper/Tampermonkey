@@ -7,6 +7,7 @@
     "tm:list": "node tools/tm-sync.mjs list",
     "tm:check": "node tools/tm-sync.mjs check",
     "tm:raw-check": "node tools/tm-sync.mjs raw-check",
+    "cac:versions": "node tools/cac-version-ledger.mjs",
     "tm:new": "node tools/tm-sync.mjs new",
     "tm:bump": "node tools/tm-sync.mjs bump",
     "tm:sync-urls": "node tools/tm-sync.mjs sync-urls"

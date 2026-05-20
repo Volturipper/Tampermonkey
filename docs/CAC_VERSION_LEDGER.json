@@ -1,0 +1,109 @@
+{
+  "schema": "cac.version_ledger.v1",
+  "updatedAt": "2026-05-20T00:55:00+08:00",
+  "sourceOfTruth": [
+    "D:\\Codex\\Tampermonkey\\docs\\START_HERE.md",
+    "D:\\Codex\\CAC_MONITOR.cmd status --json",
+    "D:\\Codex\\CAC_RUNTIME_TARGET.cmd list --probe --no-json",
+    "D:\\Codex\\CAC_RELEASE_GATE.cmd --no-json",
+    "D:\\Codex\\CAC_REVIEW_DECISION_GATE.cmd --package <zip-name> --no-json",
+    "npm run tm:raw-check"
+  ],
+  "currentInstalled": {
+    "id": "v220-public-runtime-2026.5.221",
+    "scriptId": "cac-v220-runtime",
+    "metadataVersion": "2026.5.221",
+    "runtimeVersion": "v220-lease-alias-candidate.1",
+    "installState": "installed_scoped_single_enabled",
+    "uiCompleteness": "api_only_not_ui_complete",
+    "rawSha256": "9a06ae1907f1309969f559a142ee4c5d2f1bcefc088320dfcd1e643d9595997f"
+  },
+  "promotionRule": {
+    "requiredOrder": [
+      "candidate_package",
+      "sha256_recorded",
+      "static_intake_pass",
+      "cross_browser_validate_pass",
+      "independent_review_accept",
+      "single_version_scoped_install",
+      "api_smoke_pass",
+      "supervised_dry_run_pass",
+      "lease_gate_pass",
+      "release_gate_blocks_real_unattended_production",
+      "raw_update_check_pass"
+    ],
+    "uiCompleteReleaseRequires": [
+      "full_ui_baseline_preserved_or_migrated",
+      "ui_parity_smoke_pass",
+      "api_smoke_pass"
+    ]
+  },
+  "entries": [
+    {
+      "id": "v216-single-script-merge-20260509.1",
+      "kind": "full_ui_baseline",
+      "sourceZip": "D:\\Gemini DL\\cac-single-script-merge-20260509.zip",
+      "sourceSha256": "2163db6543ed185ba4a1ad453fbe5591cd350a9e1ff8ca5dbe499da2d3a9ac30",
+      "localProbeScript": "D:\\Codex\\Tampermonkey\\scratch\\cac-ui-source-probe\\runtime\\cac-userscript.user.js",
+      "uiCompleteness": "full_panel_runtime_behavior",
+      "apiCompleteness": "legacy_bridge_plus_runtime_api",
+      "reviewState": "historical_candidate",
+      "installState": "not_installed",
+      "notes": "Use as the UI preservation base. Do not replace it with a mini panel."
+    },
+    {
+      "id": "v216-single-script-merge-safe-defaults-20260510.1",
+      "kind": "full_ui_safe_defaults_baseline",
+      "sourceZip": "D:\\Gemini DL\\cac-cross-browser-tampermonkey-install-pack-safe-defaults-20260510.zip",
+      "sourceSha256": "17a2ad3cf208599489302aa39f41d76b8b26c5d3978cd90918338320946f9c21",
+      "localProbeScript": "D:\\Codex\\Tampermonkey\\scratch\\cac-ui-source-probe\\cac-current-reviewed.user.js",
+      "uiCompleteness": "full_panel_runtime_behavior",
+      "apiCompleteness": "legacy_bridge_plus_runtime_api",
+      "reviewState": "safe_defaults_reviewed_for_isolated_smoke",
+      "installState": "not_installed",
+      "notes": "Safe-defaults UI baseline for the next UI-preserving API merge."
+    },
+    {
+      "id": "v219-api-enhancement-candidate.1",
+      "kind": "api_candidate",
+      "sourceZip": "D:\\Gemini DL\\cac-api-enhancement-v219-20260512.zip",
+      "sourceSha256": "1d40313e85c8a7274f3e8bebee8a3b2c890de66b627afbdb7437a89162235745",
+      "uiCompleteness": "api_only_not_ui_complete",
+      "apiCompleteness": "api_enhancement_27_keys",
+      "reviewState": "accepted_for_local_api_review",
+      "installState": "replaced_by_v220",
+      "notes": "Historical API candidate; not a final human-facing release."
+    },
+    {
+      "id": "v220-public-runtime-2026.5.221",
+      "kind": "current_public_api_runtime",
+      "sourceZip": "D:\\Gemini DL\\cac-api-enhancement-v220-lease-alias-20260512.zip",
+      "sourceSha256": "0190c7de51f2c0ac24b4a3c67e43e32179824e853cb7b49a480bcfe268907062",
+      "scriptPath": "scripts/cac-v220-runtime/cac-v220-runtime.user.js",
+      "rawUrl": "https://raw.githubusercontent.com/Volturipper/Tampermonkey/main/scripts/cac-v220-runtime/cac-v220-runtime.user.js",
+      "metadataVersion": "2026.5.221",
+      "runtimeVersion": "v220-lease-alias-candidate.1",
+      "rawSha256": "9a06ae1907f1309969f559a142ee4c5d2f1bcefc088320dfcd1e643d9595997f",
+      "uiCompleteness": "api_only_not_ui_complete",
+      "apiCompleteness": "lease_alias_api_27_keys",
+      "reviewState": "accepted_for_local_api_review",
+      "installState": "installed_scoped_single_enabled",
+      "notes": "Current installed public raw update lane. Release gate still blocks real, unattended, production, and takeover."
+    },
+    {
+      "id": "v221-self-iteration-packet-candidate.1",
+      "kind": "api_candidate_waiting_review",
+      "sourceZip": "D:\\Gemini DL\\cac-api-enhancement-v221-self-iteration-20260512.zip",
+      "sourceSha256": "8d8b1b4f99d9913c1d17b3649183d3461d8b44c351bf36b0db73a287670bb927",
+      "candidateRuntimeScript": "D:\\Codex\\n8n-gpt-orchestrator\\received-assets\\20260520-065329-cac-api-enhancement-v221-self-iteration-20260512.zip\\extracted\\runtime\\cac-userscript.user.js",
+      "metadataVersion": "2026.05.12.v221-self-iteration-packet-candidate.1",
+      "runtimeVersion": "v221-self-iteration-packet-candidate.1",
+      "uiCompleteness": "api_only_not_ui_complete",
+      "apiCompleteness": "self_iteration_packet_28_keys",
+      "reviewState": "waiting_no_package_review_decision",
+      "reviewGate": "D:\\Codex\\CAC_REVIEW_DECISION_GATE.cmd --package \"cac-api-enhancement-v221-self-iteration-20260512.zip\" --no-json",
+      "installState": "not_installed",
+      "notes": "Treat as bounded API review candidate only unless UI parity is restored."
+    }
+  ]
+}

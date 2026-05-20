@@ -19,11 +19,14 @@ npm run tm:new -- my-script --name "My Script" --match "https://example.com/*"
 npm run tm:bump -- example-versioned patch
 npm run tm:sync-urls -- --repo OWNER/REPO --branch main
 npm run tm:raw-check
+npm run cac:versions
 ```
 
 `tm:sync-urls` writes both `@updateURL` and `@downloadURL` to GitHub raw URLs. It also reads `tampermonkey.config.json` when present; keep `tampermonkey.config.example.json` as the tracked template.
 
 `tm:raw-check` fetches each script's public raw `@updateURL` / `@downloadURL`, compares remote `@version` with the local file, and prints the fetched SHA256. Run it before browser update checks.
+
+`cac:versions` reads `docs/CAC_VERSION_LEDGER.json` and prints the current CAC runtime, waiting candidates, UI baseline records, review state, install state, and whether a record is API-only or UI-complete. Use it before deciding which CAC artifact is current.
 
 ## Git Decision
 
