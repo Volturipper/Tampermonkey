@@ -1,6 +1,6 @@
 {
   "schema": "cac.version_ledger.v1",
-  "updatedAt": "2026-05-20T12:56:00+08:00",
+  "updatedAt": "2026-05-20T13:35:00+08:00",
   "sourceOfTruth": [
     "D:\\Codex\\Tampermonkey\\docs\\START_HERE.md",
     "D:\\Codex\\CAC_MONITOR.cmd status --json",
@@ -104,6 +104,22 @@
       "reviewGate": "D:\\Codex\\CAC_REVIEW_DECISION_GATE.cmd --package \"cac-api-enhancement-v221-self-iteration-20260512.zip\" --no-json",
       "installState": "installed_scoped_single_enabled",
       "notes": "Installed only on the dedicated runtime smoke conversation after replacing v220, not alongside it. API smoke reports 28 keys including selfIterationPacket; supervised dry-run, lease gate, heartbeat ingest, and release gate passed. Treat as bounded API review candidate only unless UI parity is restored."
+    },
+    {
+      "id": "v222-ui-preserving-api-merge-candidate.1",
+      "kind": "ui_preserving_api_merge_candidate",
+      "sourceZip": "D:\\Gemini DL\\cac-ui-preserving-api-merge-v222-20260512.zip",
+      "sourceSha256": "4b70b8d39e8ac8287a1e73944dcd22dc5105f9fc87c01cb9074a445bab5c33a1",
+      "candidateRuntimeScript": "D:\\Codex\\n8n-gpt-orchestrator\\received-assets\\20260520-132046-cac-ui-preserving-api-merge-v222-20260512.zip\\extracted\\runtime\\cac-userscript.user.js",
+      "metadataVersion": "2026.05.12.v222-ui-preserving-api-merge-candidate.1",
+      "runtimeVersion": "v222-ui-preserving-api-merge-candidate.1",
+      "runtimeSha256": "db184e97f782f565d52a42ac553d4fa9ba075e4e81452d71c48536b7e50a74b2",
+      "uiCompleteness": "full_ui_preserving_candidate_not_installed",
+      "apiCompleteness": "self_iteration_packet_28_keys_plus_full_ui_base",
+      "reviewState": "sent_to_independent_reviewer_waiting_decision",
+      "reviewGate": "D:\\Codex\\CAC_REVIEW_DECISION_GATE.cmd --package \"cac-ui-preserving-api-merge-v222-20260512.zip\" --no-json",
+      "installState": "not_installed_waiting_review",
+      "notes": "Static-only candidate from v216 safe-defaults full UI plus v221 API bridge. No public/raw promotion yet; current header lacks @updateURL/@downloadURL and needs metadata completion before auto-update testing."
     }
   ]
 }
