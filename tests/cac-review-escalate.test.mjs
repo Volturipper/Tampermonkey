@@ -22,7 +22,7 @@ test("waits shortly after a follow-up was sent", async () => {
   });
 
   assert.equal(result.decision, "WAIT_REVIEW");
-  assert.equal(result.next, "check_review_gate_later");
+  assert.equal(result.next, "switch_to_nonblocking_local_work_until_review_marker_or_heartbeat_change");
 });
 
 test("escalates to a second reviewer after follow-up threshold", async () => {

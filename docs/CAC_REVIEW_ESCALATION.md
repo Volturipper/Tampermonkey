@@ -18,7 +18,9 @@ Low-token flow:
 
 Escalation decisions:
 
-- `WAIT_REVIEW`: reviewer follow-up was recently sent; check later.
+- `WAIT_REVIEW`: reviewer follow-up was recently sent; do not dead-wait in
+  Codex. Treat the WebAI reviewer as an async queue, let heartbeat/marker
+  surfaces wake the lane, and switch to nonblocking local work.
 - `SEND_FOLLOWUP`: generate a package-specific follow-up and send through
   `CAC_REVIEW_RELAY`.
 - `ESCALATE_SECOND_REVIEWER`: route the same package to a second independent

@@ -65,6 +65,7 @@
 - [x] Send the generated v222 package-specific reviewer follow-up through `CAC_REVIEW_RELAY` after generic direct-send failed at `composer_not_found`.
 - [x] Add `npm run cac:review-escalate` / `D:\Codex\CAC_REVIEW_ESCALATE.cmd` plus `docs/CAC_REVIEW_ESCALATION.md` so wait/follow-up/second-reviewer/owner-fallback decisions are explicit.
 - [x] Clarify `CAC_UI_PARITY_SMOKE` warning IDs so missing `@updateURL` / `@downloadURL` are reported as promotion blockers, not confusing `*_present` warnings.
+- [x] Make `CAC_REVIEW_ESCALATE` route `WAIT_REVIEW` to nonblocking local work instead of implying Codex should dead-wait for WebAI.
 - [ ] Harvest a fresh package-specific v222 reviewer decision with `CAC_REVIEW_DECISION_GATE --package "cac-ui-preserving-api-merge-v222-20260512.zip" --no-json`.
 - [ ] Restore CAC user-facing UI as a first-class requirement: base the next full candidate on the existing v216 single-script merge/safe-defaults UI, not a new mini panel.
 - [ ] Improve CAC panel UI/UX from `docs/CAC_UI_UX_ROADMAP.md`: preserve full UI, use OSS assets only with pinned source/license, and plan frontend/controller/API decoupling.

@@ -47,6 +47,10 @@ Root shortcut: `D:\Codex\CAC_REVIEW_FOLLOWUP.cmd --id <ledger-entry> --out promp
 
 Root shortcut: `D:\Codex\CAC_REVIEW_ESCALATE.cmd --id <ledger-entry>`.
 
+If it returns `WAIT_REVIEW`, do not sit in the CAC install lane. The reviewer is
+being tracked by WebAI heartbeat/latest-marker surfaces, so switch to a
+nonblocking local task until the marker or heartbeat state changes.
+
 See `docs/CAC_REVIEW_ESCALATION.md`.
 
 `cac:install-ready` answers whether the waiting CAC candidate is ready for a bounded replacement install. It combines lane status, package-specific review decision, single-version state, and static UI smoke. It is read-only and treats default release-gate install blocking as a warning for explicit scoped replacement, not as unattended/production approval.

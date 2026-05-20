@@ -107,7 +107,7 @@ function chooseDecision({ lane, installReady, thresholds }) {
     reason: followupAlreadySent
       ? `followup already sent ${heartbeatAgeMin.toFixed(1)}m ago`
       : `initial review wait ${heartbeatAgeMin.toFixed(1)}m < ${thresholds.followupMinutes}m`,
-    next: "check_review_gate_later",
+    next: "switch_to_nonblocking_local_work_until_review_marker_or_heartbeat_change",
   };
 }
 
