@@ -111,8 +111,8 @@ export async function runUiParitySmoke(options = {}) {
     check("safe_default_prompt_submit_off", hasAny(content, ["promptSubmitEnabled: false", "promptSubmitEnabled = false"]), "prompt submit off"),
     check("safe_default_unattended_off", hasAny(content, ["unattendedOperationEnabled: false", "unattendedOperationEnabled = false"]), "unattended off"),
     check("safe_default_production_off", hasAny(content, ["productionInstallEnabled: false", "productionInstallEnabled = false"]), "production off"),
-    check("update_url_present", updateUrls.length > 0, updateUrls.join(",") || "missing @updateURL", "warn"),
-    check("download_url_present", downloadUrls.length > 0, downloadUrls.join(",") || "missing @downloadURL", "warn"),
+    check("missing_update_url", updateUrls.length > 0, updateUrls.join(",") || "missing @updateURL", "warn"),
+    check("missing_download_url", downloadUrls.length > 0, downloadUrls.join(",") || "missing @downloadURL", "warn"),
   ];
 
   const failures = checks.filter((item) => !item.pass && item.severity === "fail");

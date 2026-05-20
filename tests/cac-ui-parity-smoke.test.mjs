@@ -35,7 +35,7 @@ test("passes static UI parity markers and warns on missing update metadata", asy
   assert.equal(result.ok, true);
   assert.equal(result.decision, "PASS_STATIC_UI_PARITY_CANDIDATE");
   assert.deepEqual(result.failures, []);
-  assert.deepEqual(result.warnings, ["update_url_present", "download_url_present"]);
+  assert.deepEqual(result.warnings, ["missing_update_url", "missing_download_url"]);
 });
 
 test("fails when candidate is too small or lacks panel markers", async () => {

@@ -77,7 +77,7 @@ export async function buildInstallReady(options = {}) {
   if (!options.skipUiSmoke && entry.candidateRuntimeScript) {
     uiSmoke = await runUiParitySmoke({ entry, source: entry.candidateRuntimeScript, ledger });
     if (!uiSmoke.ok) blockers.push("ui_parity_static_smoke_failed");
-    if (uiSmoke.warnings.includes("update_url_present") || uiSmoke.warnings.includes("download_url_present")) {
+    if (uiSmoke.warnings.includes("missing_update_url") || uiSmoke.warnings.includes("missing_download_url")) {
       warnings.push("missing_update_or_download_url_blocks_public_raw_promotion");
     }
   }

@@ -57,6 +57,10 @@ Root shortcut: `D:\Codex\CAC_INSTALL_READY.cmd --id <ledger-entry>`.
 
 Root shortcut: `D:\Codex\CAC_UI_PARITY_SMOKE.cmd --id <ledger-entry>`.
 
+For UI-preserving CAC candidates, `missing_update_url` / `missing_download_url`
+are promotion warnings only: they block public/raw auto-update promotion, but
+they do not by themselves block local UI/API review.
+
 ## Git Decision
 
 Use Git for this workspace. Tampermonkey update checks depend on stable, versioned script URLs, so Git history plus GitHub raw URLs are the lowest-friction local/cloud sync path.
