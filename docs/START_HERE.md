@@ -39,6 +39,10 @@ Root shortcut: `D:\Codex\CAC_LANE_STATUS.cmd --compact`.
 
 Root shortcut: `D:\Codex\CAC_REVIEW_PROMPT_GEN.cmd --id <ledger-entry>`.
 
+`cac:review-followup` generates a short package-specific reviewer follow-up from the current install-ready state. Use it when `cac:lane` / `cac:install-ready` says `WAIT_REVIEW`.
+
+Root shortcut: `D:\Codex\CAC_REVIEW_FOLLOWUP.cmd --id <ledger-entry> --out prompts/<file>.md`.
+
 `cac:install-ready` answers whether the waiting CAC candidate is ready for a bounded replacement install. It combines lane status, package-specific review decision, single-version state, and static UI smoke. It is read-only and treats default release-gate install blocking as a warning for explicit scoped replacement, not as unattended/production approval.
 
 Root shortcut: `D:\Codex\CAC_INSTALL_READY.cmd --id <ledger-entry>`.

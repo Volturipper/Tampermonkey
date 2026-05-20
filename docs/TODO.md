@@ -61,6 +61,8 @@
 - [x] Add `npm run cac:review-prompt` to generate reviewer prompts from ledger/package metadata and avoid hand-written package/hash/scope drift.
 - [x] Add read-only `npm run cac:install-ready` / `D:\Codex\CAC_INSTALL_READY.cmd` so install decisions become `WAIT_REVIEW`, `BLOCKED`, or `READY_FOR_BOUNDED_REPLACEMENT_INSTALL`.
 - [x] Add static `npm run cac:ui-smoke` / `D:\Codex\CAC_UI_PARITY_SMOKE.cmd` to verify full-panel UI markers before any browser install.
+- [x] Add `npm run cac:review-followup` / `D:\Codex\CAC_REVIEW_FOLLOWUP.cmd` to generate package-specific reviewer follow-up prompts when install readiness is waiting on review.
+- [x] Send the generated v222 package-specific reviewer follow-up through `CAC_REVIEW_RELAY` after generic direct-send failed at `composer_not_found`.
 - [ ] Harvest a fresh package-specific v222 reviewer decision with `CAC_REVIEW_DECISION_GATE --package "cac-ui-preserving-api-merge-v222-20260512.zip" --no-json`.
 - [ ] Restore CAC user-facing UI as a first-class requirement: base the next full candidate on the existing v216 single-script merge/safe-defaults UI, not a new mini panel.
 - [ ] Improve CAC panel UI/UX from `docs/CAC_UI_UX_ROADMAP.md`: preserve full UI, use OSS assets only with pinned source/license, and plan frontend/controller/API decoupling.
